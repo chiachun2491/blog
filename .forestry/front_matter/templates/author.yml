@@ -44,4 +44,5 @@ fields:
   label: Featured Author
   description: Feature this author on the home page
 pages:
+- content/authors/jeffery-ho/chia-chun-ho.md
 - content/authors/jeffery-ho/jeffery.md
