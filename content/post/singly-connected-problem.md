@@ -6,7 +6,7 @@ excerpt: Give an efficient algorithm to determine whether or not a directed grap
 timeToRead: 10
 authors:
   - Jeffery Ho
-draft: true
+draft: false
 ---
 
 ## 題目說明
