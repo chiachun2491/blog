@@ -5,7 +5,13 @@
 &lt;li>課程講師：許哲豪 (Che-Hao,Hsu / Jack Hsu) 博士&lt;/li>
 &lt;li>&lt;a class="link" href="https://hackmd.io/@OmniXRI-Jack/NTUST-EdgeAI" target="_blank" rel="noopener"
 >【課程說明】&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
+&lt;/ul></description></item><item><title>Similarity-Aware Multi-Modal Fake News Detection</title><link>https://blog.jeffery.tk/p/fake-news-detection-safe/</link><pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/fake-news-detection-safe/</guid><description>&lt;blockquote>
+&lt;p>Zhou, Xinyi &amp;amp; Wu, Jindi &amp;amp; Zafarani, Reza. (2020). SAFE: Similarity-Aware Multi-Modal Fake News Detection.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;h3 id="fake-news-detection">Fake News Detection&lt;/h3>
+&lt;p>假新聞（故意且可驗證虛假的新聞文章）通常包含文本和視覺的資訊，現有的基於內容的假新聞檢測方法不是只考慮文本信息，就是結合兩種類型的數據而忽略關係（相似性）。
+作者認為在判斷假新聞的任務上，理解這種關係（相似性）以預測假新聞的價值有兩個方面。&lt;/p></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
 &lt;li>&lt;strong>論文名稱：&lt;/strong> A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip&lt;/li>
 &lt;li>&lt;strong>論文來源：&lt;/strong> ICSSE 2020&lt;/li>
 &lt;li>&lt;strong>論文連結：&lt;/strong> &lt;a href="https://doi.org/10.1109/ICSSE50014.2020.9219260">https://doi.org/10.1109/ICSSE50014.2020.9219260&lt;/a>&lt;/li>

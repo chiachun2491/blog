@@ -149,7 +149,264 @@ alt="測試圖像">
 &lt;p>G. Hsu, J. Chen and Y. Chung, &amp;ldquo;Application-Oriented License Plate Recognition,&amp;rdquo; in IEEE Transactions on Vehicular Technology, vol. 62, no. 2, pp. 552-561, Feb. 2013, doi: 10.1109/TVT.2012.2226218. &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;/section></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
+&lt;/section></description></item><item><title>Similarity-Aware Multi-Modal Fake News Detection</title><link>https://blog.jeffery.tk/p/fake-news-detection-safe/</link><pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/fake-news-detection-safe/</guid><description>&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622.png" alt="Featured image of post Similarity-Aware Multi-Modal Fake News Detection" />&lt;blockquote>
+&lt;p>Zhou, Xinyi &amp;amp; Wu, Jindi &amp;amp; Zafarani, Reza. (2020). SAFE: Similarity-Aware Multi-Modal Fake News Detection.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;h3 id="fake-news-detection">Fake News Detection&lt;/h3>
+&lt;p>假新聞（故意且可驗證虛假的新聞文章）通常包含文本和視覺的資訊，現有的基於內容的假新聞檢測方法不是只考慮文本信息，就是結合兩種類型的數據而忽略關係（相似性）。
+作者認為在判斷假新聞的任務上，理解這種關係（相似性）以預測假新聞的價值有兩個方面。&lt;/p>
+&lt;h3 id="relationship-similarity-for-predicting-fake-news">Relationship (similarity) for predicting fake news&lt;/h3>
+&lt;p>一些假新聞（或可信度低的新聞）為了吸引公眾注意力，更喜歡使用戲劇性、幽默（滑稽）和誘人的圖像，其內容與新聞文本中的實際內容相去甚遠。&lt;/p>
+&lt;p>所以當一篇假新聞文章講述一個帶有虛構場景或陳述的故事時，是很難找到相關的和未經處理的圖像來匹配這些虛構的內容，因此當創作者使用未經處理的圖像來支持非事實的場景或陳述時，假新聞的文本和視覺信息之間是存在「&lt;strong>差距&lt;/strong>」的。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 148; flex-basis: 357px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959.png" data-size="860x578">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959_hu4c74a270de04c870ca3141c64d84d041_79713_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959_hu4c74a270de04c870ca3141c64d84d041_79713_1024x0_resize_box_2.png 1024w"
+width="860"
+height="578"
+loading="lazy"
+alt="Miscaptioned Definition">
+&lt;/a>
+&lt;figcaption>Miscaptioned Definition&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 97; flex-basis: 234px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943.png" data-size="860x881">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943_huc99c3a8c78c233b5087b183b206703a5_312664_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943_huc99c3a8c78c233b5087b183b206703a5_312664_1024x0_resize_box_2.png 1024w"
+width="860"
+height="881"
+loading="lazy"
+alt="Examples at https://www.snopes.com/fact-check/rating/miscaptioned/">
+&lt;/a>
+&lt;figcaption>Examples at &lt;a href="https://www.snopes.com/fact-check/rating/miscaptioned/">https://www.snopes.com/fact-check/rating/miscaptioned/&lt;/a>&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="usuimilarity-uauware-ufuakueu-news-detection-method-safe">&lt;u>S&lt;/u>imilarity-&lt;u>A&lt;/u>ware &lt;u>F&lt;/u>ak&lt;u>E&lt;/u> news detection method (SAFE)&lt;/h3>
+&lt;p>SAFE 由三個模塊組成：&lt;/p>
+&lt;ul>
+&lt;li>多模態（文本和視覺）特徵提取&lt;/li>
+&lt;li>模態內（模態獨立）假新聞預測&lt;/li>
+&lt;li>跨模態相似度提取&lt;/li>
+&lt;/ul>
+&lt;p>&lt;figure style="flex-grow: 286; flex-basis: 688px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622.png" data-size="3572x1246">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622_hu1fe59100f806a3b1884406926f185a64_1483991_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622_hu1fe59100f806a3b1884406926f185a64_1483991_1024x0_resize_box_2.png 1024w"
+width="3572"
+height="1246"
+loading="lazy"
+alt="SAFE Framework overview">
+&lt;/a>
+&lt;figcaption>SAFE Framework overview&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>對於每篇新聞文章，會用神經網絡自動獲取其文本和影像的潛在表達式，並且計算出它們之間的相似性後，聯合學習新聞文本和視覺的表達式及相似性來預測假新聞。&lt;/p>
+&lt;p>作者所提出的方法主要的目的在識別新聞文章在其文本或圖像上的虛假性，或文本和圖像之間的&lt;strong>不匹配&lt;/strong>。&lt;/p>
+&lt;h3 id="contributions">Contributions&lt;/h3>
+&lt;p>本文是第一個提出藉由觀察新聞文本和視覺信息之間的關係（相似性）在辨識假新聞任務上，文中提出了一種聯合利用多模態（文本和視覺）和之間的相似性來學習新聞文章的表達式並預測假新聞的方法。&lt;/p>
+&lt;h2 id="methodology">Methodology&lt;/h2>
+&lt;h3 id="problem-definition-and-key-notation">Problem Definition and Key Notation&lt;/h3>
+&lt;ul>
+&lt;li>Given a news article $A = {T, V }$ ( $T = $ text information, $V = $ visual information)&lt;/li>
+&lt;li>Denote $t,v \in \mathbb{R}^d$ as corresponding representations, $t = M_t(T, \theta_t), v=M_v(V, \theta_v)$&lt;/li>
+&lt;li>Let $s = M_s(t, v)$ denote the similarity between $t$ and $v$ , where $s \in [0, 1]$&lt;/li>
+&lt;li>Goal: $M_p: (M_t, M_v, M_s) \overset{(\theta_t, \theta_v, \theta_p)}{\longrightarrow} \hat{y} \in [0,1]$, where $\theta_*$ are parameters to be learned
+&lt;ul>
+&lt;li>Determine whether $A$ is fake news $(\hat{y} = 1)$ or true one $(\hat{y} = 0)$.&lt;/li>
+&lt;li>By investigating its textual, visual information, and their relationship.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="feature-extraction">Feature Extraction&lt;/h3>
+&lt;h4 id="text">Text&lt;/h4>
+&lt;p>在新聞文本的部分 SAFE 透過引入額外的全連接層來擴展 Text-CNN 來提取每篇新聞文章的文本特徵。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 239; flex-basis: 574px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938.png" data-size="2240x936">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938_hu3b743b299a93eb2ce79b2b73969d8bfe_352725_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938_hu3b743b299a93eb2ce79b2b73969d8bfe_352725_1024x0_resize_box_2.png 1024w"
+width="2240"
+height="936"
+loading="lazy"
+alt="Text-CNN">
+&lt;/a>
+&lt;figcaption>Text-CNN&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h4 id="image">Image&lt;/h4>
+&lt;p>首先使用預訓練的 image2sentence 模型將新聞內容中的圖像轉換成文字訊息後，同樣使用和處理文字相同的 Text-CNN 來提取特徵。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 464; flex-basis: 1114px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191.png" data-size="3324x716">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191_hu9dd449b03ca8584abf1cfb78fd2ec66d_3138806_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191_hu9dd449b03ca8584abf1cfb78fd2ec66d_3138806_1024x0_resize_box_2.png 1024w"
+width="3324"
+height="716"
+loading="lazy"
+alt="image2sentence example (source: https://github.com/nikhilmaram/Show_and_Tell )">
+&lt;/a>
+&lt;figcaption>image2sentence example (source: &lt;a href="https://github.com/nikhilmaram/Show_and_Tell">https://github.com/nikhilmaram/Show_and_Tell&lt;/a> )&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>跟目前的多模態假新聞檢測研究相比，大部分的方法通常直接應用預訓練的 CNN 模型（例如 VGG）來獲取新聞圖像的表達式，而本文為了要計算跨模態的相似性時，所以使用 image2sentence 將圖像先轉為文字來保持一致性。&lt;/p>
+&lt;h3 id="modal-independent-fake-news-detection">Modal-independent Fake News Detection&lt;/h3>
+&lt;p>為了在預測假新聞時正確表示新聞文本和視覺信息，我們的目標是將提取的新聞內容的文本和視覺特徵正確地映射到為假新聞的機率，並進一步映射到它們的實際標籤。&lt;/p>
+&lt;p>計算假新聞機率公式為&lt;/p>
+&lt;p>$$M_p(t,v) = 1 \dot{ } \text{softmax}(W_p(t \oplus v)+b_p) $$&lt;/p>
+&lt;p>其中 $1 = [1,0]^T$, $W_p \in \mathbb{R}^{2 \times 2d}$ 和 $b_p \in \mathbb{R}^{2}$ 是要被訓練的參數。&lt;/p>
+&lt;p>Cross-entropy-based （交叉熵） loss function:&lt;/p>
+&lt;p>$$L_p(\theta_t, \theta_v, \theta_p) = -\mathbb{E}_{(a,y) \sim (A,Y)}(y \log M_p(t,v) + (1-y)\log(1-M_p(t,v)))$$&lt;/p>
+&lt;h3 id="cross-modal-similarity-extraction">Cross-modal Similarity Extraction&lt;/h3>
+&lt;p>大多數的方法都是分開處理不同的模態特徵 $(t, v)$，只是將它們連接起來，並沒有觀察它們之間的關係。然而作者提到說除此之外，還可以通過評估文本信息與其視覺信息的（非）相關性來檢測新聞文章的虛假性。&lt;/p>
+&lt;p>假新聞創作者有時會主動使用不相關的圖像進行虛假陳述以吸引讀者的注意力，或者由於難以找到支持的非造假圖像而被迫使用它們，與提供相關文本和視覺信息的真實新聞文章相比，那些文本和圖像不相關的文章更有可能是假的。&lt;/p>
+&lt;p>作者這邊稍微修改餘弦相似度，定義新聞文本和視覺信息之間的相關性如下：&lt;/p>
+&lt;p>$$M_s(t,v) = \frac{t \cdot v + |t||v| }{2 |t||v| } $$&lt;/p>
+&lt;p>讓 $M_s(t,v)$ 的值為正數且 $\in [0,1]$，$M_s(t,v) \to 0$ 表示 $t, v$ 相差甚遠，$M_s(t,v) \to 1$ 表示 $t, v$ 幾乎相同。&lt;/p>
+&lt;p>假設從純相似性角度分析時，與文本和圖像匹配的新聞文章相比，文本和視覺信息不匹配的新聞文章更可能是假的，定義 Cross-entropy-based （交叉熵） loss function：&lt;/p>
+&lt;p>$$L_S(\theta_t, \theta_v) = -\mathbb{E}_{(a,y) \sim (A,Y)}(y \log (1-M_s(t,v)) + (1-y)\log M_s(t,v))$$&lt;/p>
+&lt;h3 id="model-integration-and-joint-learning">Model Integration and Joint Learning&lt;/h3>
+&lt;p>在檢測假新聞時，我們的目標是透過文本、視覺信息和它們之間的關係去正確識別假新聞。&lt;/p>
+&lt;p>因此定義最終 loss function：&lt;/p>
+&lt;p>$$L(\theta_t, \theta_v, \theta_p) = \alpha L_p(\theta_t, \theta_v, \theta_p) + \beta L_s(\theta_t, \theta_v)$$&lt;/p>
+&lt;p>$$L_p(\theta_t, \theta_v, \theta_p) = -\mathbb{E}_{(a,y) \sim (A,Y)}(y \log M_p(t,v) + (1-y)\log(1-M_p(t,v)))$$&lt;/p>
+&lt;p>$$L_S(\theta_t, \theta_v) = -\mathbb{E}_{(a,y) \sim (A,Y)}(y \log (1-M_s(t,v)) + (1-y)\log M_s(t,v))$$&lt;/p>
+&lt;h2 id="optimization">Optimization&lt;/h2>
+&lt;p>&lt;figure style="flex-grow: 178; flex-basis: 427px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546.png" data-size="1380x774">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546_huf292d83af57ff9e0d1769df8a8099f6f_238027_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546_huf292d83af57ff9e0d1769df8a8099f6f_238027_1024x0_resize_box_2.png 1024w"
+width="1380"
+height="774"
+loading="lazy"
+alt="SAFE Optimization Algorithm">
+&lt;/a>
+&lt;figcaption>SAFE Optimization Algorithm&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 128; flex-basis: 307px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119.png" data-size="2240x1746">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119_huf2bbe367ef12d20ead920207669390cf_770507_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119_huf2bbe367ef12d20ead920207669390cf_770507_1024x0_resize_box_2.png 1024w"
+width="2240"
+height="1746"
+loading="lazy"
+alt="SAFE Update Equations">
+&lt;/a>
+&lt;figcaption>SAFE Update Equations&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="experiments">Experiments&lt;/h2>
+&lt;h3 id="setup">Setup&lt;/h3>
+&lt;h4 id="dataset">Dataset&lt;/h4>
+&lt;p>FakeNewsNet&lt;/p>
+&lt;ul>
+&lt;li>PolitiFact (politifact.com) (2002.05 ~ 2018.07) &lt;br>美國政治聲明和報告的非營利性事實核查網站。&lt;/li>
+&lt;li>GossipCop (gossipcop.com) (2000.07 ~ 2018.12)&lt;br>對雜誌和報紙上發表的名人報導和娛樂故事進行事實核查。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;figure style="flex-grow: 545; flex-basis: 1309px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349.png" data-size="2554x468">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349_hu33b818b7ce510be2d60fd4b67ec936ca_281339_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349_hu33b818b7ce510be2d60fd4b67ec936ca_281339_1024x0_resize_box_2.png 1024w"
+width="2554"
+height="468"
+loading="lazy"
+alt="Data Statistics https://github.com/KaiDMML/FakeNewsNet">
+&lt;/a>
+&lt;figcaption>Data Statistics &lt;a href="https://github.com/KaiDMML/FakeNewsNet">https://github.com/KaiDMML/FakeNewsNet&lt;/a>&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h4 id="baselines">Baselines&lt;/h4>
+&lt;ol>
+&lt;li>&lt;strong>文本 (LIWC)&lt;/strong>：廣泛接受的心理語言學詞典&lt;/li>
+&lt;li>&lt;strong>視覺（VGG-19）&lt;/strong>：使用微調的 VGG-19 作為基線之一&lt;/li>
+&lt;li>&lt;strong>多模態信息（att-RNN）：&lt;/strong>
+使用帶有注意力機制 (Attention) 的 LSTM 和 VGG-19 來融合新聞文章的文本、視覺和社交平台特徵。 （為了公平，排除社交資訊）&lt;/li>
+&lt;li>&lt;strong>SAFE\T&lt;/strong>：不使用文本信息&lt;/li>
+&lt;li>&lt;strong>SAFE\V&lt;/strong>：不使用視覺信息&lt;/li>
+&lt;li>&lt;strong>SAFE\S&lt;/strong>：不捕捉文本和視覺特徵之間的關係（相似性）。 在這種情況下，每個新聞的特徵通過連接它們來融合&lt;/li>
+&lt;li>&lt;strong>SAFE\W&lt;/strong>：僅評估文本和視覺信息之間的關係。 在這種情況下，分類器與跨模態相似性提取模塊的輸出直接相連。&lt;/li>
+&lt;/ol>
+&lt;h3 id="performance-analysis">Performance Analysis&lt;/h3>
+&lt;p>&lt;figure style="flex-grow: 327; flex-basis: 786px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866.png" data-size="3460x1056">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866_hu45946cf8b615dd721c01565f1ed4386e_910607_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866_hu45946cf8b615dd721c01565f1ed4386e_910607_1024x0_resize_box_2.png 1024w"
+width="3460"
+height="1056"
+loading="lazy"
+alt="Performance of Methods in Detecting Fake News">
+&lt;/a>
+&lt;figcaption>Performance of Methods in Detecting Fake News&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;ul>
+&lt;li>根據兩個數據集的準確度值和 F1 分數，SAFE 的表現優於所有 baseline。&lt;/li>
+&lt;li>在 PolitiFact 上，準確度排序：SAFE（多模態）&amp;gt; att-RNN（多模態）$\approx$ ￼LIWC（文本）&amp;gt; VGG-19（視覺）&lt;/li>
+&lt;li>在 GossipCop 上，準確度排序： SAFE（多模態）&amp;gt; VGG-19（視覺）&amp;gt; att-RNN（多模態）&amp;gt; LIWC（文本）&lt;/li>
+&lt;/ul>
+&lt;h3 id="module-analysis">Module Analysis&lt;/h3>
+&lt;ol>
+&lt;li>SAFE 在所有變體中表現最佳，&lt;/li>
+&lt;li>使用多模態信息（SAFE\S 或 SAFE\W）比使用單模態信息（SAFE\T 或 SAFE\V）表現更好&lt;/li>
+&lt;li>獨立使用多模態信息（SAFE\S）或挖掘它們之間的關係（SAFE\W）來檢測假新聞兩者的準確度是可比的&lt;/li>
+&lt;li>文本信息（SAFE\V）比視覺信息（SAFE\T）更重要&lt;/li>
+&lt;/ol>
+&lt;p>&lt;figure style="flex-grow: 54; flex-basis: 130px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542.png" data-size="559x1030">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542_hu4e1aa221f29204d884102df40b834eb0_63203_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542_hu4e1aa221f29204d884102df40b834eb0_63203_1024x0_resize_box_2.png 1024w"
+width="559"
+height="1030"
+loading="lazy"
+alt="Module Analysis">
+&lt;/a>
+&lt;figcaption>Module Analysis&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 113; flex-basis: 272px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374.png" data-size="1120x986">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374_hudaf0970889790d7d6a6fc81c1fbfccf4_229991_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374_hudaf0970889790d7d6a6fc81c1fbfccf4_229991_1024x0_resize_box_2.png 1024w"
+width="1120"
+height="986"
+loading="lazy"
+alt="Parameter Analysis">
+&lt;/a>
+&lt;figcaption>Parameter Analysis&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="parameter-analysis">Parameter Analysis&lt;/h3>
+&lt;p>α 和 β 用於分配多模態特徵 (α) 和跨模態的相似性 (β) 之間的相對重要性，準確度範圍 0.75~0.85，F1 範圍 0.8~0.9。&lt;/p>
+&lt;p>在兩個資料集上 α 和 β 的最佳比例也不同，這再次驗證了多模態信息和跨模態關係在預測假新聞中的重要性：&lt;/p>
+&lt;ul>
+&lt;li>PolitiFact: α : β = 0.4 : 0.6&lt;/li>
+&lt;li>GossipCop: α : β = 0.6 : 0.4&lt;/li>
+&lt;/ul>
+&lt;h3 id="case-study">Case Study&lt;/h3>
+&lt;p>這邊作者提出兩個問題：&lt;/p>
+&lt;ul>
+&lt;li>是否存在任何真實世界的假新聞故事，其文本和視覺信息彼此之間沒有密切關聯？&lt;/li>
+&lt;li>如果存在，SAFE 能否正確識別這種無關性並進一步識別其虛假性？&lt;/li>
+&lt;/ul>
+&lt;p>為此，作者瀏覽了兩個數據集中的新聞文章，並將它們的真實標籤 (ground truth) 與 SAFE 計算的相似度得分進行了比較。&lt;/p>
+&lt;p>一些虛構故事存在文本和視覺信息之間的差距可歸類為（但不限於）兩個原因：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>這樣的故事很難得到未經處理的圖像的支持：&lt;br>在 Fig.5 (a) 中，實際上沒有與投票和賬單相關的圖像。在與真正親密關係的情侶 Fig.6 (c) 相比，假情侶往往很少有合影或使用拼貼畫 Fig.5 (c)。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用&lt;strong>有吸引力&lt;/strong>但不密切相關的圖像可以幫助增加新聞流量：&lt;br>&lt;/p>
+&lt;p>Fig.5 (b) 中的假新聞包括一張與死亡故事相衝突的微笑人物圖像&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;figure style="flex-grow: 144; flex-basis: 345px">
+&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596.png" data-size="1120x777">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596.png"
+srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596_hu5f40eb4e99386465f077d3f034e16588_1024391_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596_hu5f40eb4e99386465f077d3f034e16588_1024391_1024x0_resize_box_2.png 1024w"
+width="1120"
+height="777"
+loading="lazy"
+alt="Fake/True News Examples">
+&lt;/a>
+&lt;figcaption>Fake/True News Examples&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>SAFE 有助於正確評估新聞文本和視覺信息之間的關係（相似性）。&lt;/p>
+&lt;p>對於 Fig.5 中的假新聞，它們的相似度得分 $s$ 都很低，SAFE 正確地將它們標記為假新聞。 類似地，SAFE 為 Fig.6 中的所有真實新聞故事分配了高相似度分數 $s$ ，並將它們預測為真實新聞。&lt;/p>
+&lt;h2 id="conclusions">Conclusions&lt;/h2>
+&lt;ul>
+&lt;li>本文針對假新聞檢測任務提出了一種相似性感知 (similarity-aware) 的多模態方法 SAFE。&lt;/li>
+&lt;li>該方法提取新聞內容的文本和視覺特徵，並觀察它們之間的關係。&lt;/li>
+&lt;li>實驗結果表明，多模態特徵和跨模態關係（相似性）在假新聞檢測中具有相當的重要性。&lt;/li>
+&lt;/ul>
+&lt;h2 id="comments">Comments&lt;/h2>
+&lt;ul>
+&lt;li>Add across-modal relationship (similarity) to detect fake news detection&lt;/li>
+&lt;li>Use image2sentence get image caption
+&lt;ul>
+&lt;li>Modify cosine similarity equation&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Baseline:
+&lt;ul>
+&lt;li>Text feature baseline only one of traditional method&lt;/li>
+&lt;li>Multi-modal baseline only one to compared&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
 &lt;li>&lt;strong>論文名稱：&lt;/strong> A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip&lt;/li>
 &lt;li>&lt;strong>論文來源：&lt;/strong> ICSSE 2020&lt;/li>
 &lt;li>&lt;strong>論文連結：&lt;/strong> &lt;a href="https://doi.org/10.1109/ICSSE50014.2020.9219260">https://doi.org/10.1109/ICSSE50014.2020.9219260&lt;/a>&lt;/li>

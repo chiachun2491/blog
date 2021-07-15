@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>multi-modal analysis on Jeffery's Blog</title><link>https://blog.jeffery.tk/tags/multi-modal-analysis/</link><description>Recent content in multi-modal analysis on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 17 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jeffery.tk/tags/multi-modal-analysis/index.xml" rel="self" type="application/rss+xml"/><item><title>Similarity-Aware Multi-Modal Fake News Detection</title><link>https://blog.jeffery.tk/p/fake-news-detection-safe/</link><pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/fake-news-detection-safe/</guid><description>&lt;blockquote>
+&lt;p>Zhou, Xinyi &amp;amp; Wu, Jindi &amp;amp; Zafarani, Reza. (2020). SAFE: Similarity-Aware Multi-Modal Fake News Detection.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;h3 id="fake-news-detection">Fake News Detection&lt;/h3>
+&lt;p>假新聞（故意且可驗證虛假的新聞文章）通常包含文本和視覺的資訊，現有的基於內容的假新聞檢測方法不是只考慮文本信息，就是結合兩種類型的數據而忽略關係（相似性）。
+作者認為在判斷假新聞的任務上，理解這種關係（相似性）以預測假新聞的價值有兩個方面。&lt;/p></description></item></channel></rss>
