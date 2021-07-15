@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>edge ai chip on Jeffery's Blog</title><link>https://blog.jeffery.tk/tags/edge-ai-chip/</link><description>Recent content in edge ai chip on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jeffery.tk/tags/edge-ai-chip/index.xml" rel="self" type="application/rss+xml"/><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
+&lt;li>&lt;strong>論文名稱：&lt;/strong> A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip&lt;/li>
+&lt;li>&lt;strong>論文來源：&lt;/strong> ICSSE 2020&lt;/li>
+&lt;li>&lt;strong>論文連結：&lt;/strong> &lt;a href="https://doi.org/10.1109/ICSSE50014.2020.9219260">https://doi.org/10.1109/ICSSE50014.2020.9219260&lt;/a>&lt;/li>
+&lt;li>&lt;strong>論文關鍵字：&lt;/strong> &lt;code>CNN&lt;/code>、&lt;code>人頭檢測&lt;/code>、&lt;code>Edge AI晶片&lt;/code>&lt;/li>
+&lt;/ul></description></item></channel></rss>

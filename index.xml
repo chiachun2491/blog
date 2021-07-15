@@ -1,5 +1,834 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jeffery's Blog</title><link>https://blog.jeffery.tk/</link><description>Recent content on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 30 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jeffery.tk/index.xml" rel="self" type="application/rss+xml"/><item><title>Singly Connected problem</title><link>https://blog.jeffery.tk/post/singly-connected-problem/</link><pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/post/singly-connected-problem/</guid><description>題目說明 Give an efficient algorithm to determine whether or not a directed graph is singly connected.
-螢幕輸入 First line is N, denotes the amount of test case, then there are Ns graph data followed by N. Second line is V, each graph data is composed of V (the number of vertices, &amp;lt;= 1000). Third line is E, the number of edges, it does no size limitation, then followed by Es edges which are denoted by pair of vertex (e.</description></item><item><title>About</title><link>https://blog.jeffery.tk/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/about/</guid><description>Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui.
-Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-Nulla vitae elit libero, a pharetra augue.</description></item><item><title>NTUST Edge AI Homework1</title><link>https://blog.jeffery.tk/edge-ai-hw1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/edge-ai-hw1/</guid><description>Chia Chun Ho (Jeffery Ho) 何嘉峻 Bachelor in National Taiwan University of Science and Technology M.S. Student in National Taiwan University of Science and Technology Latex Function test $$L_{final}(\theta_{f}, \theta_{d}, \theta_{e}) = L_{d}(\theta_{f}, \theta_{d}) - \lambda L_{e}(\theta_{f}, \theta_{e})$$ $$(\hat{\theta_{f}}, \hat{\theta_{d}}) = arg \ \underset{\theta_{f}, \theta_{d}}{min} \ L_{final}(\theta_{f}, \theta_{d}, \hat{\theta_{e}})$$ $$\hat{\theta_{e}} = arg \ \underset{\theta_{e}}{max} \ L_{final}(\hat{\theta_{f}}, \hat{\theta_{d}}, \theta_{e} )$$
-Project NTUST 人工智慧與邊緣運算實務 專題報告</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jeffery's Blog</title><link>https://blog.jeffery.tk/</link><description>Recent content on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jeffery.tk/index.xml" rel="self" type="application/rss+xml"/><item><title>利用車牌辨識以檢測違規車牌</title><link>https://blog.jeffery.tk/p/edge-plate-detection/</link><pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-plate-detection/</guid><description>&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5.png" alt="Featured image of post 利用車牌辨識以檢測違規車牌" />&lt;ul>
+&lt;li>臺灣科技大學資訊工程系 109學年度第二學期 ( 2021/2/24 - 2021/6/23 )&lt;/li>
+&lt;li>課程名稱：人工智慧與邊緣運算實務&lt;/li>
+&lt;li>課程代號：CS5149701&lt;/li>
+&lt;li>課程講師：許哲豪 (Che-Hao,Hsu / Jack Hsu) 博士&lt;/li>
+&lt;li>&lt;a class="link" href="https://hackmd.io/@OmniXRI-Jack/NTUST-EdgeAI" target="_blank" rel="noopener"
+>【課程說明】&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="摘要說明">摘要說明&lt;/h2>
+&lt;p>透過照片或影片畫面辨識出車牌號碼後，可以用於檢查自定義的違規車牌資料庫內是否有該違規車牌，以達到檢測違規車輛之用途。&lt;/p>
+&lt;h2 id="系統簡介">系統簡介&lt;/h2>
+&lt;h3 id="創作發想">創作發想&lt;/h3>
+&lt;p>常常看到路邊的停車格計費員在進行收費，利用手上的計費機辨識出車牌後開收費單，因此想到如果還可以搭配檢查該車牌是否為違規車輛，讓計費員可以通報後進行後續處置。&lt;/p>
+&lt;h3 id="硬體架構">硬體架構&lt;/h3>
+&lt;p>目前設計可以輸入照片或是影片做為分析，使用 Google Colab 進行自定義車牌偵測模型訓練，並於 Google Colab 上進行照片、影片推論。&lt;/p>
+&lt;p>原先有要嘗試在樹莓派 (Raspberry Pi) 進行推論，由於後來疫情關係沒找到鏡頭因此沒在樹莓派上嘗試。&lt;/p>
+&lt;h3 id="工作原理及流程">工作原理及流程&lt;/h3>
+&lt;p>推論的流程共分為三部分，分別為「車輛偵測」－「車牌偵測」－「車牌 OCR」。&lt;/p>
+&lt;p>接收到輸入的影像後，會先使用預訓練的 yolo-v4 coco 偵測出畫面上的車輛（汽車、摩托車），再使用自己另外訓練的自定義的車牌偵測資料集偵測出車牌位置後，再使用 tesseract 在車牌位置上進行 OCR 辨識。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 448; flex-basis: 1076px">
+&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5.png" data-size="713x159">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5.png"
+srcset="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5_huf738ae938586e2523874cb2afd528823_128500_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5_huf738ae938586e2523874cb2afd528823_128500_1024x0_resize_box_2.png 1024w"
+width="713"
+height="159"
+loading="lazy"
+alt="車牌辨識推論流程示意圖">
+&lt;/a>
+&lt;figcaption>車牌辨識推論流程示意圖&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="資料集建立方式">資料集建立方式&lt;/h3>
+&lt;p>總共使用論文提供的資料集以及自己另外收集的資料集：&lt;/p>
+&lt;h4 id="論文資料集">論文資料集&lt;/h4>
+&lt;p>Application Oriented License Plate(AOLP) Database&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>: &lt;a href="http://aolpr.ntust.edu.tw/lab/index.html">http://aolpr.ntust.edu.tw/lab/index.html&lt;/a>&lt;/p>
+&lt;p>該資料集共有三種分類，如下圖由左至右分為：&lt;/p>
+&lt;ul>
+&lt;li>Access Control (AC)&lt;/li>
+&lt;li>Road Patrol (RP)&lt;/li>
+&lt;li>Traffic Law Enforcement (LE)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;figure style="flex-grow: 443; flex-basis: 1064px">
+&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B.png" data-size="1694x382">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B.png"
+srcset="https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B_hu1bd3c88400bd229af46472baf76dc986_937898_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B_hu1bd3c88400bd229af46472baf76dc986_937898_1024x0_resize_box_2.png 1024w"
+width="1694"
+height="382"
+loading="lazy"
+alt="AC, RP, LE (AOLP Datasets)">
+&lt;/a>
+&lt;figcaption>AC, RP, LE (AOLP Datasets)&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h4 id="另外收集的資料集">另外收集的資料集&lt;/h4>
+&lt;p>我有另外自行收集行車記錄器的影片截圖來仿造 AOLP 資料集（如下圖），與 AOLP 資料集比較不同的點是：&lt;/p>
+&lt;ul>
+&lt;li>目前有些車牌為 7 碼，AOLP 的都是 6 碼不知道會不會有影響&lt;/li>
+&lt;li>另外原資料集的部分都是汽車車牌截圖，我自行產生的部分有一半是機車車牌截圖&lt;/li>
+&lt;/ul>
+&lt;p>&lt;figure style="flex-grow: 431; flex-basis: 1034px">
+&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/dJptjud.png" data-size="569x132">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/dJptjud.png"
+srcset="https://blog.jeffery.tk/p/edge-plate-detection/dJptjud_hua9692f444118e12bb5a7dd97071e9cc3_142309_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/dJptjud_hua9692f444118e12bb5a7dd97071e9cc3_142309_1024x0_resize_box_2.png 1024w"
+width="569"
+height="132"
+loading="lazy"
+alt="機車車牌截圖">
+&lt;/a>
+&lt;figcaption>機車車牌截圖&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="模型選用與訓練">模型選用與訓練&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>車輛偵測&lt;/strong>：
+直接採用了 yolov4 預訓練的 COCO 資料集模型，用於偵測出畫面上的汽車、機車位置。&lt;/li>
+&lt;li>&lt;strong>車牌偵測&lt;/strong>：
+這邊我們使用 yolov4-tiny 自定義上述的資料集，使用 darknet 對資料集進行訓練及推論。&lt;/li>
+&lt;li>&lt;strong>車牌 OCR 辨識&lt;/strong>：
+使用 tesseract 作為 OCR 辨識模型，在車牌偵測的模型後得到車牌位置後，將車牌圖片進行OCR辨識得到車牌字元。&lt;/li>
+&lt;/ol>
+&lt;p>下圖為車牌偵測模型的訓練過程損失(Loss)及類別平均精確度(mAP)變化圖&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 100; flex-basis: 240px">
+&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N.png" data-size="1000x1000">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N.png"
+srcset="https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N_huf3ecb11a12599b1e142b15d3a88cc185_88769_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N_huf3ecb11a12599b1e142b15d3a88cc185_88769_1024x0_resize_box_2.png 1024w"
+width="1000"
+height="1000"
+loading="lazy"
+alt="訓練過程損失(Loss)及類別平均精確度(mAP)變化圖">
+&lt;/a>
+&lt;figcaption>訓練過程損失(Loss)及類別平均精確度(mAP)變化圖&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="實驗結果">實驗結果&lt;/h2>
+&lt;h3 id="成果展示說明">成果展示說明&lt;/h3>
+&lt;p>由於疫情期間，因此不便外出拍攝街道停車格影片，因此這邊使用從網路上找到的&lt;a class="link" href="https://youtu.be/NrgI_nsZzXU" target="_blank" rel="noopener"
+>行車記錄器影片&lt;/a>來做測試範例：&lt;/p>
+&lt;p>如下圖我們可以看到我們訓練出的模型可以很正確的框出車牌的位置，另外在我們自定義的違規車牌列表中，也有偵測到違規的車牌號碼，在繪製結果圖時，程式也會將違規車牌號碼顯示在畫面上。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 188; flex-basis: 451px">
+&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG.png" data-size="580x308">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG.png"
+srcset="https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG_hu004ae0cdf65df785ede56f48894197c9_241036_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG_hu004ae0cdf65df785ede56f48894197c9_241036_1024x0_resize_box_2.png 1024w"
+width="580"
+height="308"
+loading="lazy"
+alt="模型實際偵測結果">
+&lt;/a>
+&lt;figcaption>模型實際偵測結果&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>原先一開始打算直接用資料集訓練車牌偵測模型，但是在實際測試的過程中發現由於資料集都是直接輸入只有車子的畫面，並沒有像行車記錄器那樣的廣角視角，因此才會先多用一層 COCO 模型去先找出汽車、機車的位置，但也有因此減慢了在推論過程中的速度。&lt;/p>
+&lt;p>&lt;img src="https://i.imgur.com/YMcUCQd.gif" alt="" />&lt;/p>
+&lt;h3 id="改進與優化">改進與優化&lt;/h3>
+&lt;p>這邊提出兩個後續改進的方向：&lt;/p>
+&lt;h4 id="合併-coco-和-自定義車牌偵測-模型">合併 COCO 和 自定義車牌偵測 模型&lt;/h4>
+&lt;p>應該可以先用目前的推論流程在偵測出車牌位置後，另外收集成新的資料集來重新訓練一個新模型，應該就可以減少兩層模型的推論時間。&lt;/p>
+&lt;h4 id="車牌清晰化">車牌清晰化&lt;/h4>
+&lt;p>在推論影片的過程中也有發現畫面在移動的過程中，常常會遇到模糊的問題，這邊或許可以參考網路上的做法，訓練出基於 GAN 的模型，將模糊不清的車牌經過模型後變清楚&lt;/p>
+&lt;h3 id="比較與測試">比較與測試&lt;/h3>
+&lt;p>這邊原先預計使用 OpenVINO 釋出的車牌偵測模型 &lt;a class="link" href="https://docs.openvinotoolkit.org/2019_R1/_vehicle_license_plate_detection_barrier_0106_description_vehicle_license_plate_detection_barrier_0106.html" target="_blank" rel="noopener"
+>vehicle-license-plate-detection-barrier-0106&lt;/a> 來作為車牌偵測的比較對象，但經過測試後發現該模型貌似並不支援台灣的車牌。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 375; flex-basis: 900px">
+&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP.png" data-size="638x170">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP.png"
+srcset="https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP_hub3cdcbc74f03e51b003fb5182608512b_200808_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP_hub3cdcbc74f03e51b003fb5182608512b_200808_1024x0_resize_box_2.png 1024w"
+width="638"
+height="170"
+loading="lazy"
+alt="測試圖像">
+&lt;/a>
+&lt;figcaption>測試圖像&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="結論">結論&lt;/h2>
+&lt;p>經過測試後可以發現訓練的模型可以正確地找到車牌的位置，但在 OCR 的部分常因為畫面模糊而導致 OCR 辨識不良，後續可以透過修改影像強化或是額外訓練模型來做改善。&lt;/p>
+&lt;h2 id="參考文獻">參考文獻&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://omnixri.blogspot.com/2021/05/google-colabyolov4-tiny.html" target="_blank" rel="noopener"
+>許哲豪 - 如何以Google Colab及Yolov4-tiny來訓練自定義資料集─以狗臉、貓臉、人臉偵測為例&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/AlexeyAB/darknet" target="_blank" rel="noopener"
+>Github - AlexeyAB/darknet&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://ithelp.ithome.com.tw/articles/10227263" target="_blank" rel="noopener"
+>iThome - Day26-聽過 OCR 嗎? 實作看看吧 – pytesseract&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="附錄">附錄&lt;/h2>
+&lt;h3 id="colab源碼">Colab源碼&lt;/h3>
+&lt;ul>
+&lt;li>自定義車牌偵測模型訓練程式碼 &lt;a class="link" href="https://colab.research.google.com/github/chiachun2491/NTUST_EdgeAI/blob/main/train.ipynb" target="_blank" rel="noopener"
+>&lt;img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" />&lt;/a>&lt;/li>
+&lt;li>測試推論結果範例程式碼 &lt;a class="link" href="https://colab.research.google.com/github/chiachun2491/NTUST_EdgeAI/blob/main/demo.ipynb" target="_blank" rel="noopener"
+>&lt;img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" />&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="資料集及標註檔">資料集及標註檔&lt;/h3>
+&lt;p>由於車牌某部分也是屬於個資的部分，這邊提供我自己收集的&lt;strong>部分&lt;/strong>資料集作為訓練範例，且僅作為學術研究使用，不得用於其他用途，已經將訓練集和驗證集的影像和標註檔分別放置在 &lt;code>yolo_train&lt;/code>, &lt;code>yolo_valid&lt;/code> 資料夾中。&lt;/p>
+&lt;p>&lt;a class="link" href="https://gitHub.com/chiachun2491/NTUST_EdgeAI/releases/" target="_blank" rel="noopener"
+>&lt;img src="https://img.shields.io/github/downloads/chiachun2491/NTUST_EdgeAI/v0.1/total.svg" alt="Github Releases (by Release)" />&lt;/a>&lt;/p>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>G. Hsu, J. Chen and Y. Chung, &amp;ldquo;Application-Oriented License Plate Recognition,&amp;rdquo; in IEEE Transactions on Vehicular Technology, vol. 62, no. 2, pp. 552-561, Feb. 2013, doi: 10.1109/TVT.2012.2226218. &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
+&lt;li>&lt;strong>論文名稱：&lt;/strong> A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip&lt;/li>
+&lt;li>&lt;strong>論文來源：&lt;/strong> ICSSE 2020&lt;/li>
+&lt;li>&lt;strong>論文連結：&lt;/strong> &lt;a href="https://doi.org/10.1109/ICSSE50014.2020.9219260">https://doi.org/10.1109/ICSSE50014.2020.9219260&lt;/a>&lt;/li>
+&lt;li>&lt;strong>論文關鍵字：&lt;/strong> &lt;code>CNN&lt;/code>、&lt;code>人頭檢測&lt;/code>、&lt;code>Edge AI晶片&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="簡介">簡介&lt;/h2>
+&lt;p>近年來進行人頭檢測的許多方法都是使用 CNN (Convolutional Neural Network) 進行，但大多數的方法為了追求高準確率，通常都會增加網路的layer的層數或是增加網路的權重，導致計算量增大以及硬體需求增加。&lt;/p>
+&lt;p>相對的，使用整合好的 CNN IC 晶片可以得到更好功耗及計算速度，本文使用由 &lt;strong>視芯公司（AVSdep）&lt;/strong> 的Mipy (Micropython) 開發板（AVS05P-S），搭配 CNN IC (AI860) 及視芯提供的訓練工具進行模型的訓練。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 152; flex-basis: 365px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu.png" data-size="646x424">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu_hud40173a5139939dc4aa8da344b78e686_178835_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu_hud40173a5139939dc4aa8da344b78e686_178835_1024x0_resize_box_2.png 1024w"
+width="646"
+height="424"
+loading="lazy"
+alt="Mipy 開發板外觀（圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>Mipy 開發板外觀（圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 128; flex-basis: 309px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu.png" data-size="626x486">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu_hu56c3e12213b55ef3bc2c798a53a11db7_50976_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu_hu56c3e12213b55ef3bc2c798a53a11db7_50976_1024x0_resize_box_2.png 1024w"
+width="626"
+height="486"
+loading="lazy"
+alt="Mipy 開發板應用架構圖（圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>Mipy 開發板應用架構圖（圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="前置相關工作">前置相關工作&lt;/h2>
+&lt;h3 id="訓練工具">訓練工具&lt;/h3>
+&lt;p>作者使用由公司提供的訓練工具（C++ 版本）&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>建立資料庫（Create database tool）&lt;/strong>
+將訓練圖片編碼成二進制檔案以加速訓練時間&lt;/li>
+&lt;li>&lt;strong>推論工具（Inference tool）&lt;/strong>
+捕獲各種來源的影像並進行資料擴充（擴充細節請看下節）&lt;/li>
+&lt;li>&lt;strong>訓練工具（Training tool）&lt;/strong>
+執行訓練循環（前向傳播、後向傳播、損失計算、權重優化）&lt;/li>
+&lt;/ol>
+&lt;h3 id="影像資料擴充">影像資料擴充&lt;/h3>
+&lt;p>為了要增加模型的準確度以及避免模型過擬合（Overfitting），資料集需要大量且多樣化，因此進行資料擴增：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>旋轉圖片 (Rotation)&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>亮度調整 (Brightness adjustment)&lt;/strong>
+藉由調整圖片像素來進行亮度調整：
+&lt;ul>
+&lt;li>(1) $P_{new} = P_{old} \times a$&lt;/li>
+&lt;li>(2) $P_{new} = P_{old} + b$&lt;/li>
+&lt;li>(1) (2) 可以同時進行&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>模糊處理 (Blurring image)&lt;/strong>
+隨機模糊或是銳利化圖片&lt;/li>
+&lt;li>&lt;strong>鏡像處理 (Mirroring image)&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>替換背景 (Background replacement)&lt;/strong>
+將原始圖片中固定的背景顏色替換成隨機的風景圖&lt;/li>
+&lt;/ul>
+&lt;h2 id="mipy-運算過程">Mipy 運算過程&lt;/h2>
+&lt;p>&lt;figure style="flex-grow: 69; flex-basis: 165px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q.png" data-size="536x776">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q_hufae0aaffe141195c836de154257d6b63_218947_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q_hufae0aaffe141195c836de154257d6b63_218947_1024x0_resize_box_2.png 1024w"
+width="536"
+height="776"
+loading="lazy"
+alt="Mipy 運算過程流程圖（圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>Mipy 運算過程流程圖（圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>作者拍攝了一些人作為資料集，總共 8 個身體方向，而每個身體方向都包含 5 個頭部方向，分別為：向上、向後、向左、向右、向前，總共拍攝了 800 多張照片，將這些照片分成三個類別，分別為：前面、後面、側面。
+&lt;figure style="flex-grow: 305; flex-basis: 733px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX.png" data-size="764x250">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX_hucb67491b7a051ba435867d899825433e_268210_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX_hucb67491b7a051ba435867d899825433e_268210_1024x0_resize_box_2.png 1024w"
+width="764"
+height="250"
+loading="lazy"
+alt="(a) 前面 Front View (b) 後面 Back View (c) 側面 Side View （圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>(a) 前面 Front View (b) 後面 Back View (c) 側面 Side View （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>為了增加資料集的多樣性，作者使用推論工具進行資料擴增（如前面章節說明），將圖片數從800多張擴增到總共 120,000 章圖片，分成 108,000 張圖片為訓練集，12,000 張圖片為測試集，擴增參數設定如表 1。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 279; flex-basis: 671px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq.png" data-size="806x288">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq_hue3fd285faa45d1a9777f005bd445d4b4_63390_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq_hue3fd285faa45d1a9777f005bd445d4b4_63390_1024x0_resize_box_2.png 1024w"
+width="806"
+height="288"
+loading="lazy"
+alt="資料擴增使用方法及參數（圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>資料擴增使用方法及參數（圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>而每次建立資料庫時使用 30,000 張照片作為訓練集資料，3,000 張照片作為測試集資料，並設定輸出神經元類型：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>編號&lt;/th>
+&lt;th>輸出表示&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>0&lt;/td>
+&lt;td>正樣本偵測&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1-4&lt;/td>
+&lt;td>類別樣本（其中兩個用來標示前、後、側面）&lt;br> (+1, +1): 前面&lt;br> (+1, -1): 後面&lt;br>(-1, -1): 側面&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>負樣本偵測&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6-9&lt;/td>
+&lt;td>邊界框位置回歸&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>模型超參數如下所示：&lt;/p>
+&lt;ul>
+&lt;li>Optimizer: Adam&lt;/li>
+&lt;li>Batch size: 250&lt;/li>
+&lt;li>Learning rate: 0.0001&lt;/li>
+&lt;li>Weight decay: 0.0001&lt;/li>
+&lt;li>Recreate database every 30 epoch&lt;/li>
+&lt;/ul>
+&lt;p>訓練流程使用批次檔進行：&lt;/p>
+&lt;ol>
+&lt;li>執行建立資料庫工具&lt;/li>
+&lt;li>執行訓練工具&lt;/li>
+&lt;li>讀取紀錄訓練工具的 log&lt;/li>
+&lt;/ol>
+&lt;p>上述步驟進行 3 次後，產生 &lt;code>G0&lt;/code> 做為預訓練模型，不過從下圖可以發現訓練誤差遠低於測試誤差。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 129; flex-basis: 311px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg.png" data-size="410x316">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg_hud841408a07afb484c3628596b1504c4c_72206_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg_hud841408a07afb484c3628596b1504c4c_72206_1024x0_resize_box_2.png 1024w"
+width="410"
+height="316"
+loading="lazy"
+alt="G0 Train/Test Loss （圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>G0 Train/Test Loss （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>因此作者把在風景照中的 False Positive Data（被偵測為人頭但是實際上不是人頭的圖像）是為新的負樣本資料，加入訓練資料中增加模型準確度。&lt;/p>
+&lt;p>並設定閥值（Threadshold）來找出需要額外再訓練的圖片，公式如下：
+$$S = N_0 - N_5$$&lt;/p>
+&lt;ul>
+&lt;li>$N_0$: 正樣本信心分數&lt;/li>
+&lt;li>$N_5$: 負樣本信心分數&lt;/li>
+&lt;/ul>
+&lt;p>這邊訓練的過程就是使用預訓練時的批次檔作為訓練循環，直到大多數的負樣本時將停止訓練，第一次訓練完的模型稱為 &lt;code>G1&lt;/code>，作者提到說驗證 &lt;code>G1&lt;/code> 的過程中發現許多 False Positive Data，經過重複進行修正和訓練後，第二次訓練完成的模型稱為 &lt;code>G2&lt;/code>，以此類推，在 &lt;code>G4&lt;/code> 檢測到的 False Positive Data 已經很少，但準確度依舊只有 58.9%，判斷為 overfitting，因此作者決定增加其他訓練資料。
+&lt;figure style="flex-grow: 410; flex-basis: 986px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER.png" data-size="600x146">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER_hu65ab1b83269040a11217499d11e0ae2d_58434_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER_hu65ab1b83269040a11217499d11e0ae2d_58434_1024x0_resize_box_2.png 1024w"
+width="600"
+height="146"
+loading="lazy"
+alt="G1, G2, G3, G4 Train/Test Loss （圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>G1, G2, G3, G4 Train/Test Loss （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>這邊增加的資料為 &lt;strong>Label Face in the Wild (LFW)&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>&lt;/strong>，挑選的標準為照片中只能出現一個人，以及臉部不可以被其他東西覆蓋，經過篩選後共 9,131 張照片被挑選，其中 1/4 作為測試集，剩餘資料作為訓練集使用。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 257; flex-basis: 617px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV.png" data-size="355x138">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV_hu2f0d495c0b7cd110a41685932f9ed5bc_106758_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV_hu2f0d495c0b7cd110a41685932f9ed5bc_106758_1024x0_resize_box_2.png 1024w"
+width="355"
+height="138"
+loading="lazy"
+alt="Label Face in the Wild (LFW) 資料示意 （圖片來源： http://vis-www.cs.umass.edu/lfw/#information ）">
+&lt;/a>
+&lt;figcaption>Label Face in the Wild (LFW) 資料示意 （圖片來源： &lt;a href="http://vis-www.cs.umass.edu/lfw/#information">http://vis-www.cs.umass.edu/lfw/#information&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>加入 LFW 訓練後，訓練出了 &lt;code>G5&lt;/code>、&lt;code>G6&lt;/code> 兩個模型，準確率也分別到達 65.1% 和 70.1%。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 206; flex-basis: 494px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH.png" data-size="299x145">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH_hu258a758431b9e6fcfcddca42b6199a38_30228_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH_hu258a758431b9e6fcfcddca42b6199a38_30228_1024x0_resize_box_2.png 1024w"
+width="299"
+height="145"
+loading="lazy"
+alt="G5, G6 Train/Test Loss （圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>G5, G6 Train/Test Loss （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="實驗結果與分析">實驗結果與分析&lt;/h2>
+&lt;p>將訓練好的模型載入到 AI860 後， Mipy 開發板可以執行人頭偵測任務（如下圖所示）。
+&lt;figure style="flex-grow: 200; flex-basis: 480px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc.png" data-size="450x225">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc_hu21b3b33ca83fd6f8ed88aebad3cd8268_194226_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc_hu21b3b33ca83fd6f8ed88aebad3cd8268_194226_1024x0_resize_box_2.png 1024w"
+width="450"
+height="225"
+loading="lazy"
+alt="實時系統應用畫面（圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>實時系統應用畫面（圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>作者也分析了加入 LFW 前後的比較差異，如下表 3、4 所示，我們可以發現準確率提升了 6 %，但是上升幅度並不夠明顯，於是將各種類別（前、後、側面）的資料拆開檢視後發現正面的準確度遠高於側面與後面（如下表 G5/G6 Front View），作者研判原因是因為加入的 LFW dataset 都是正面臉部的關係，導致資料不平衡的情況發生。
+&lt;figure style="flex-grow: 390; flex-basis: 937px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So.png" data-size="660x169">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So_hu47a4cb1d083bd5acc5d0c7dce528d548_45688_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So_hu47a4cb1d083bd5acc5d0c7dce528d548_45688_1024x0_resize_box_2.png 1024w"
+width="660"
+height="169"
+loading="lazy"
+alt="G4, G5 Confusion Matrix （圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>G4, G5 Confusion Matrix （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 458; flex-basis: 1100px">
+&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP.png" data-size="656x143">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP.png"
+srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP_huaeeec9757a7db7fa777adae570aa0be2_32424_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP_huaeeec9757a7db7fa777adae570aa0be2_32424_1024x0_resize_box_2.png 1024w"
+width="656"
+height="143"
+loading="lazy"
+alt="G5, G6 Front View Only Confusion Matrix （圖片來源： https://ieeexplore.ieee.org/document/9219260 ）">
+&lt;/a>
+&lt;figcaption>G5, G6 Front View Only Confusion Matrix （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="結論">結論&lt;/h2>
+&lt;p>本文利用的視芯公司（AVSdep）提供的訓練工具訓練出模型後，部署在開發板及 CNN IC 晶片上後，可以順利執行人頭辨識的任務（Human Head Detection）。其中訓練完的模型正面臉部的準確率可以達到 98.7%，模型應用在實時的檢測系統上也足夠準確，使用完整的訓練資料時，Mipy 開發板可以獲得足夠的準確率以執行實際應用。&lt;/p>
+&lt;h2 id="個人心得">個人心得&lt;/h2>
+&lt;p>筆者覺得這篇論文有點像是視芯公司的業配文，主要實作細節並沒有闡述太多關於 CNN IC 晶片網路架構的部分，另外在 &lt;code>G1&lt;/code> ~ &lt;code>G4&lt;/code> 的訓練過程中，testing loss 也都並沒有下降，感覺 False Positive Correction （誤報修正）並沒有太大作用，加入 LFW 後才有明顯改善，但效果仍然有待加強，後文在分析準確率上升問題時，很可惜的並沒有看到像是 &lt;code>G4 (Front View)&lt;/code> 或是 &lt;code>G5 Back/Side View&lt;/code> 的 Confusion Matrix 來做比較，導致只能聽從作者分析結論並沒有實驗數據參佐。&lt;/p>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>Advance Video System CO., LTD (AVSdsp), AI courses, requirements, tool updates, Q&amp;amp;A area: CNN Tool v0.0.1.2c, Available: &lt;a href="http://www.avsdsp.com/AI_Data.html">http://www.avsdsp.com/AI_Data.html&lt;/a> &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>G. B. Huang, M. Mattar, T. Berg, and E. Learned-Miller, “Labeled faces in the wild: A database for studying face recognition in unconstrained environments,” Technical Report, University of Massachusetts, Amherst, Oct. 2007. &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Query Modeling</title><link>https://blog.jeffery.tk/p/ir-homework5/</link><pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework5/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;blockquote>
+&lt;p>2020: Information Retrieval and Applications&lt;br>
+Homework 5: Query Modeling&lt;br>
+&lt;a href="https://www.kaggle.com/c/2020-information-retrieval-and-applications-hw5">https://www.kaggle.com/c/2020-information-retrieval-and-applications-hw5&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="github-code">Github code&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/chiachun2491/NTUST_IR/tree/master/homework5">https://github.com/chiachun2491/NTUST_IR/tree/master/homework5&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="homework-report">Homework report&lt;/h2>
+&lt;h3 id="使用的-tool">使用的 tool&lt;/h3>
+&lt;p>Python, numpy, pandas, collections.Counter, scipy.sparse, numba.jit, datetime&lt;/p>
+&lt;h3 id="資料前處理">資料前處理&lt;/h3>
+&lt;ol>
+&lt;li>將 &lt;code>doc_list.txt&lt;/code>, &lt;code>query_list.txt&lt;/code> 讀檔進來後，之後將每個 doc 和 query 使用 &lt;code>collections.Counter&lt;/code> 儲存。&lt;/li>
+&lt;li>生成 document 和 query 的 tf-idf&lt;/li>
+&lt;li>Lexicon 生成方式：使用 df 範圍（5 ~ 10000）的單字，過濾一些 stop word 和稀少的單字。&lt;/li>
+&lt;li>在 &lt;code>c(w,d)&lt;/code>, &lt;code>c(w,q)&lt;/code> 使用 sublinear_tf，並先計算好 document 和 query 的 unigram language model，也先計算好 background language model。&lt;/li>
+&lt;/ol>
+&lt;h3 id="作業流程">作業流程&lt;/h3>
+&lt;p>使用 vsm 做為第一次檢索的結果去做 rocchio，再將 rocchio 最好的結果作為 smm relevant document，下去做 smm&lt;/p>
+&lt;h3 id="rocchio-模型參數調整-homework5_rocchiopy">Rocchio 模型參數調整 (homework5_rocchio.py)&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>$TF:\begin{cases}
+0 &amp;amp; \text{ if } tf=0 \
+1 + log(tf)&amp;amp; \text{ if } tf&amp;gt;=1
+\end{cases} \ \ IDF: log(\frac{1 + N}{1 + df_{i}}) + 1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$Rocchio: \vec{q} = \alpha \cdot \vec{q} + \beta \cdot \frac{1}{\left | R_{q} \right |} \cdot \left ( \sum_{d_{j}\in R_{q}} \vec{d_{j}} \right ) - \gamma \cdot \frac{1}{\left | \bar{R_{q}} \right |} \cdot \left ( \sum_{d_{{j}'}\in \bar{R_{q}}} \vec{d_{{j}'}} \right )$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>最終使用參數（Kaggle Public Score: 0.54248）：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>alpha&lt;/code> = &lt;code>1&lt;/code> / &lt;code>beta&lt;/code> = &lt;code>0.5&lt;/code> / &lt;code>gamma&lt;/code> = &lt;code>0.15&lt;/code> / &lt;code>rele_doc&lt;/code> = &lt;code>5&lt;/code> / &lt;code>nrele_doc&lt;/code> = &lt;code>1&lt;/code> / &lt;code>epoch&lt;/code> = &lt;code>5&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="simple-mixture-model-參數調整-homework5_smmpy">Simple Mixture Model 參數調整 (homework5_smm.py)&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>$KL(q||d_{j}) \propto - \sum_{w\in V} P(w|q)logP(w|d_{j})$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$P(w|q) = \alpha \times P_{ULM}(w|q) + \beta \times P_{SMM}(w|q) + (1 - \alpha -\beta ) \times P_{BG}(w)$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$P(w|d_{j}) = \gamma \times P_{ULM}(w|d_{j}) + (1 - \gamma ) \times P_{BG}(w)
+$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>最終使用參數（Kaggle Public Score: 0.59390）：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>alpha&lt;/code> = &lt;code>0.1&lt;/code> / &lt;code>beta&lt;/code> = &lt;code>0.85&lt;/code> / &lt;code>gamma&lt;/code> = &lt;code>0.2&lt;/code> / &lt;code>rele_doc&lt;/code> = &lt;code>5&lt;/code> / &lt;code>epoch&lt;/code> = &lt;code>50&lt;/code> / &lt;code>smm_alpha&lt;/code> = &lt;code>0.6&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="各種-model-的分數表現">各種 model 的分數表現&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Model Name&lt;/th>
+&lt;th>Parameter&lt;/th>
+&lt;th style="text-align:right">Kaggle Public MAP@5000&lt;/th>
+&lt;th>Note&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>VSM (TF-IDF)&lt;/td>
+&lt;td>smooth_idf, sublinear_tf&lt;/td>
+&lt;td style="text-align:right">0.41864&lt;/td>
+&lt;td>取全部的單字&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>VSM (TF-IDF)&lt;/td>
+&lt;td>smooth_idf, sublinear_tf&lt;/td>
+&lt;td style="text-align:right">0.42399&lt;/td>
+&lt;td>只取 query 出現過的單字&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>BM25&lt;/td>
+&lt;td>K1=0.8, K3=1000, b=0.7&lt;/td>
+&lt;td style="text-align:right">0.48936&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Rocchio&lt;/td>
+&lt;td>a=1, b=0.5, g=0.15, reledoc=5, nreledoc=1, epoch=5&lt;/td>
+&lt;td style="text-align:right">0.52744&lt;/td>
+&lt;td>取全部的單字&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Rocchio&lt;/td>
+&lt;td>a=1, b=0.5, g=0.15, reledoc=5, nreledoc=1, epoch=5&lt;/td>
+&lt;td style="text-align:right">0.54248&lt;/td>
+&lt;td>取 df &amp;gt;= 5 的單字&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>SMM&lt;/td>
+&lt;td>smm_a=0.3, reledoc=5, epoch=50, a=0.15, b=0.8, g=0.3&lt;/td>
+&lt;td style="text-align:right">0.57964&lt;/td>
+&lt;td>取 df &amp;gt;= 5 的單字&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>SMM&lt;/td>
+&lt;td>smm_a=0.6, reledoc=5, epoch=50, a=0.1, b=0.85, g=0.2&lt;/td>
+&lt;td style="text-align:right">&lt;strong>0.59390&lt;/strong>&lt;/td>
+&lt;td>取 10000 &amp;lt;= df &amp;gt;= 5 的單字&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
+&lt;p>query model 主要是要解決 query 的資訊量過少的問題，像 rocchio 就是將 query 的向量加上了相關的文件向量也去除了一些些不相關文章向量，讓 query vector 能夠涵蓋更多資訊，SMM 則是透過 training P_smm 和 P_bg 讓更多特定的單字（在 background model 中沒有辦法被找到的單字）能夠在 P_smm 中的機率提高，提升 query model 的判別力。&lt;/p>
+&lt;h3 id="個人心得">個人心得&lt;/h3>
+&lt;p>　　這次作業一開始寫的時候原本以為會很簡單，想說直接挑戰實作 SMM，結果馬上被單字量嚇到，一開始也做不出來，所以就轉戰 rochhio，但是發現用第一次作業的 VSM 都沒有過 baseline，後來想說先用 sklearn 的 tfidfvectorizer 跑跑看，發現有 sublinear_tf 這個參數可以調整用來縮減 document 長度的問題，發現可以過 baseline，就趕快把公式套上去，這次作業也重做的第一次作業的 VSM，上次作業知道 sparce matrix 後，發現在 VSM 實作效率超級高，後來嘗試去掉一些出現次數較少的單字也有提升一些分數，沒嘗試太多組參數就開始做 SMM，因為這次 VSM 有重做的關係，在前處理建 unigram 和 background model 的時候都比上次 PLSA 的效率快多啦，後面就開始調整 SMM 的參數，然後到了一個瓶頸後又把目前最高分的結果當作 relevant feedback，的確也有再進步，但後面要再用同一個方法的時候就往下掉了一些，調參數的過程中也好擔心 private 的成績會掉超多的 QQ。&lt;/p></description></item><item><title>PLSA</title><link>https://blog.jeffery.tk/p/ir-homework4/</link><pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework4/</guid><description>&lt;img src="https://blog.jeffery.tk/p/ir-homework4/qITG12G.png" alt="Featured image of post PLSA" />&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;blockquote>
+&lt;p>2020: Information Retrieval and Applications&lt;br>
+Homework 4: PLSA&lt;br>
+&lt;a href="https://www.kaggle.com/c/2020-information-retrieval-and-applications-hw4-v2">https://www.kaggle.com/c/2020-information-retrieval-and-applications-hw4-v2&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="github-code">Github code&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/chiachun2491/NTUST_IR/tree/master/homework4">https://github.com/chiachun2491/NTUST_IR/tree/master/homework4&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="homework-report">Homework report&lt;/h2>
+&lt;h3 id="使用的-tool">使用的 tool&lt;/h3>
+&lt;p>Python, Jupyter, numpy, pandas, collections.Counter, scipy.sparse, numba.jit, datetime&lt;/p>
+&lt;h3 id="資料前處理">資料前處理&lt;/h3>
+&lt;ol>
+&lt;li>將 &lt;code>doc_list.txt&lt;/code>, &lt;code>query_list.txt&lt;/code> 讀檔進來後，之後將每個 doc 使用 &lt;code>collections.Counter&lt;/code> 儲存到 &lt;code>dict&lt;/code>，每個 query 都使用 &lt;code>split()&lt;/code> 儲存到 &lt;code>dict&lt;/code>。&lt;/li>
+&lt;li>這次 Lexicon 的生成方式跟之前不一樣，之前在生成 Lexicon 時只看 &lt;code>query_list&lt;/code> 的所有單詞，這次先將 doc 和 query 出現過的詞加入 Lexicon 並先計算好 document length, &lt;code>c(w, d)&lt;/code>, &lt;code>P(w|d)&lt;/code>, &lt;code>P(w|BG)&lt;/code> 先算好供後面算 term weight 使用。為了加速運算，決定還是減少單字的數量，只取出現次數遞減取前 10000 個單字，再把 query 的字也加進去。&lt;/li>
+&lt;/ol>
+&lt;h3 id="plsa-模型參數調整">PLSA 模型參數調整&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>PLSA term weight 公式：&lt;/p>
+&lt;p>$P\left ( q|d_{j} \right ) \approx \prod_{ i= 1}^{|q|} P{}'\left ( q|d_{j} \right )$&lt;/p>
+&lt;p>$P{}'\left ( q|d_{j} \right ) = \alpha \cdot P\left ( w_{i} | d_{j} \right ) + \beta \cdot \sum_{k=1}^{K} P\left ( w_{i} | T_{k} \right )P\left ( T_{k} | d_{j} \right ) + (1 -\alpha -\beta ) \cdot P\left ( w_{i} | BG \right )$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>最終使用參數（Kaggle Public Score: 0.58052）：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>K&lt;/code> = &lt;code>48&lt;/code> / &lt;code>alpha&lt;/code> = &lt;code>0.65&lt;/code> / &lt;code>beta&lt;/code> = &lt;code>0.2&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>使用的參數對照分數表現圖
+&lt;figure style="flex-grow: 346; flex-basis: 831px">
+&lt;a href="https://blog.jeffery.tk/p/ir-homework4/lKhSjXS.png" data-size="2558x738">&lt;img src="https://blog.jeffery.tk/p/ir-homework4/lKhSjXS.png"
+srcset="https://blog.jeffery.tk/p/ir-homework4/lKhSjXS_hu2d3744508cb2d2c78e497557eda6332c_453545_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/ir-homework4/lKhSjXS_hu2d3744508cb2d2c78e497557eda6332c_453545_1024x0_resize_box_2.png 1024w"
+width="2558"
+height="738"
+loading="lazy"
+alt="參數對照分數表現圖">
+&lt;/a>
+&lt;figcaption>參數對照分數表現圖&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
+&lt;p>PLSA 跟 LSA 的差別在加入的機率的概念，，讓我們可以將單詞對應到主題，再從主題對應到文章，使用兩層的機率分佈對整個樣本空間建模，其中使用 EM-Algorithm 將 &lt;code>P(w|T)&lt;/code> 和 &lt;code>P(T|d)&lt;/code> 重複進行 E-step 和 M-Step 直到算出的 log-likelihood 收斂到某個值。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 260; flex-basis: 624px">
+&lt;a href="https://blog.jeffery.tk/p/ir-homework4/qITG12G.png" data-size="484x186">&lt;img src="https://blog.jeffery.tk/p/ir-homework4/qITG12G.png"
+srcset="https://blog.jeffery.tk/p/ir-homework4/qITG12G_hu1dffc869e1d64a4036e5075742de8ba2_29927_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/ir-homework4/qITG12G_hu1dffc869e1d64a4036e5075742de8ba2_29927_1024x0_resize_box_2.png 1024w"
+width="484"
+height="186"
+loading="lazy"
+alt="PLSA 模型圖">
+&lt;/a>
+&lt;figcaption>PLSA 模型圖&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>PLSA 的優點在透過找出潛在的主題分類解決了在 query index term 發生「一詞多義」或「同義詞」的問題，讓搜尋結果更好，而缺點在於隨著 document 和 index term 數量增加，訓練參數也得線性增加，且 PLSA 針對新文件的 fold-in 效果比較不好。&lt;/p>
+&lt;h3 id="個人心得">個人心得&lt;/h3>
+&lt;p>　　作業一開始都沒有過 baseline，後來第二週老師給了沒有加入 PLSA 的參數，我直接先以那個 baseline 為目標，因為沒有加入 PLSA，所以一開始就只有算 query 的 index term (226 個)，來到了 0.53374，但是跟別人做一樣的方式，別人竟然 0.54055，比較之後發現，實作 background language model 的時候把長度也縮減了，應該不在 query 的字也要算進去，修正後就直接超過了 8-Topic 的 baseline。&lt;/p>
+&lt;p>　　接著實作 PLSA 的部分，但效果都比之前的還要爛，中間還一度發現自己的 &lt;code>P(w|T)&lt;/code> random initial 實作錯誤，後來只使用 query index term 去分類主題的效果並不好，PLSA 的特性就是會找出同義詞的情況，如果不把其他 document 的單字考慮進去，應該沒什麼效果，於是就把 Lexicon 開始擴增到 10020，但是效果並不大，所以就開始調整alpha 和 beta，&lt;strong>最後發現 alpha: 0.65-0.8, beta: 0.1-0.25, iter 30 次的效果是最好的&lt;/strong>，所以後面就把 topic 往上增加，也都維持用這個參數的範圍做測試。&lt;/p>
+&lt;p>　　最後 topic 設為 48，我也把每個分類的前 10 名的單字調出來看，發現有一些分類真的是有效果的，這時候才覺得自己的實作是正確的。&lt;/p>
+&lt;pre>&lt;code>Topic 1 (research): research develop scienc amp scientist univers new year institut scientif
+Topic 10 （family）: women say would one children like time mother child life
+Topic 17 (finance): per bank dollar cent market rate year price fund stock
+Topic 45 (ocean): sea island fish ship said water border area whale vietnam
+&lt;/code>&lt;/pre>&lt;p>　　這邊也有發現有一些單詞應該是可以設為停用字的，像是長度只有1個字（c, u, 1, 2, 3&amp;hellip;）但寫報告的時候才想到要調單字出來看，所以就來不及實作了&lt;/p>
+&lt;pre>&lt;code>Topic 0 : c lab poll ms hold ld swing maj 3 david
+Topic 7 : 1 2 research 3 4 1993 1992 1991 5 use
+Topic 24 : report state u accord unit intern million firm govern korea
+Topic 41 : 1 2 3 5 4 6 0 8 7 9
+&lt;/code>&lt;/pre></description></item><item><title>Best Match Model 25 (BM25)</title><link>https://blog.jeffery.tk/p/ir-homework2/</link><pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework2/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;blockquote>
+&lt;p>2020: Information Retrieval and Applications&lt;br>
+Homework2: Best Match Models&lt;br>
+&lt;a href="https://www.kaggle.com/c/2020-information-retrieval-and-applications-hw2">https://www.kaggle.com/c/2020-information-retrieval-and-applications-hw2&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="github-code">Github code&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/chiachun2491/NTUST_IR/tree/master/homework2">https://github.com/chiachun2491/NTUST_IR/tree/master/homework2&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="homework-report">Homework report&lt;/h2>
+&lt;h3 id="使用的-tool">使用的 tool&lt;/h3>
+&lt;p>Python, Jupyter, numpy, dataframe, datetime&lt;/p>
+&lt;h3 id="資料前處理">資料前處理&lt;/h3>
+&lt;ol>
+&lt;li>將 &lt;code>doc_list.txt&lt;/code> 和 &lt;code>query_list.txt&lt;/code> 讀檔進來後，之後將每個 doc 和 query 都使用 &lt;code>split()&lt;/code> 儲存起來。&lt;/li>
+&lt;li>跟上次 Vector Space Model 的作業一樣，在生成 Lexicon 時只看 &lt;code>query_list&lt;/code> 切完的所有詞並放到 &lt;code>set&lt;/code> 中來生成，這樣能把 Lexicon 的維度從 59680 降到僅 123 而已。&lt;/li>
+&lt;li>跟上次作業相同先將 document term-frequency, query term-frequency, inverse document frequency 先算好供後面算 BM25 term weight 使用。&lt;/li>
+&lt;/ol>
+&lt;h3 id="bm25-模型參數調整">BM25 模型參數調整&lt;/h3>
+&lt;ul>
+&lt;li>BM25 term weight 公式：&lt;/li>
+&lt;/ul>
+&lt;p>$$sim_{BM25}\left (d_{j}, q \right ) \equiv \sum_{w_{j}\in \left ( d_{j} \cap q \right )}^{} IDF(w_{j}) \times \frac{ \left ( K_{1} + 1 \right ) \times tf_{i,j}}{K_{1} [\left ( 1 - b \right ) + b \times \frac{len\left ( d_{j} \right )}{avg_{doclen}}] + tf_{i,j}} \times \frac{\left ( K_{3} + 1 \right ) \times tf_{i,q}}{ K_{3} + tf_{i,q}}$$&lt;/p>
+&lt;ul>
+&lt;li>IDF 公式：&lt;/li>
+&lt;/ul>
+&lt;p>$$IDF(w_{j}) = log\left ( \frac{N - n_{i} + 0.5}{n_{i} + 0.5} \right )$$&lt;/p>
+&lt;ul>
+&lt;li>最終使用參數（Kaggle Public Score: 0.71854）：
+&lt;ul>
+&lt;li>&lt;code>K1&lt;/code> = &lt;code>0.28&lt;/code>&lt;/li>
+&lt;li>&lt;code>K3&lt;/code> = &lt;code>1000&lt;/code>&lt;/li>
+&lt;li>&lt;code>b&lt;/code> = &lt;code>0.85&lt;/code>&lt;/li>
+&lt;li>&lt;code>avg_doclen&lt;/code> = &lt;code>611.3953710331663&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>使用的參數對照分數表現圖
+&lt;figure style="flex-grow: 331; flex-basis: 794px">
+&lt;a href="https://blog.jeffery.tk/p/ir-homework2/IxbY9i2.png" data-size="2648x800">&lt;img src="https://blog.jeffery.tk/p/ir-homework2/IxbY9i2.png"
+srcset="https://blog.jeffery.tk/p/ir-homework2/IxbY9i2_hu0186f0df2b5733644caf613a270800df_268748_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/ir-homework2/IxbY9i2_hu0186f0df2b5733644caf613a270800df_268748_1024x0_resize_box_2.png 1024w"
+width="2648"
+height="800"
+loading="lazy"
+alt="參數對照分數表現圖">
+&lt;/a>
+&lt;figcaption>參數對照分數表現圖&lt;/figcaption>
+&lt;/figure>&lt;/li>
+&lt;/ul>
+&lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
+&lt;p>BM25 跟 VSM 最大的差異在於多處理了 Document Length Normalization，讓 tf 的重要程度不會直接線性成長，一個字在出現過多次後，已經不會得到更多的分數，一樣的 tf 在較長文章的重要度會低於較短文章。&lt;/p>
+&lt;h3 id="個人心得">個人心得&lt;/h3>
+&lt;p>在一開始寫作業的時候，算好了 average document length，但是實際在計算 term weight 公式的時候忘記放進去，導致 kaggle 的分數都卡在 0.64 多，後來才發現自己耍蠢忘記除，一開始就先按照簡報上設 b 為 0.75，但都還是沒過 baseline 後，決定上調看看，到 0.8 後就過了 baseline，後來嘗試了調整 K1，發現沒有太大的幅度，K3 項後來我直接捨棄，因為試過幾次沒有含 K3 的分數都一模一樣，這次作業比較晚開始寫，所以也沒有測到很多參數，後來就繼續往上調到 b = 0.85 後，就有比較明顯的進展，雖然跟大家比還是差很多，中間有試過調整看看在算 IDF 取 log 前 +1，但是試過效果都更差，所以後來就還是用簡報上的公式，但後來想想也有可能是沒有找到適合的參數才對，搞不好分數會更高。&lt;/p></description></item><item><title>Vector Space Model</title><link>https://blog.jeffery.tk/p/ir-homework1/</link><pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework1/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;blockquote>
+&lt;p>2020: Information Retrieval and Applications&lt;br>
+Homework1: Vector Space Model&lt;br>
+&lt;a href="https://www.kaggle.com/c/2020-information-retrieval-and-applications/">https://www.kaggle.com/c/2020-information-retrieval-and-applications/&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="github-code">Github code&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/chiachun2491/NTUST_IR/tree/master/homework1">https://github.com/chiachun2491/NTUST_IR/tree/master/homework1&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="homework-report">Homework report&lt;/h2>
+&lt;h3 id="使用的-tool">使用的 tool&lt;/h3>
+&lt;p>Python, Jupyter, numpy, dataframe, sklearn.metrics.pairwise.cosine_similarity, datetime&lt;/p>
+&lt;h3 id="資料前處理">資料前處理&lt;/h3>
+&lt;p>一開始我將 &lt;code>doc_list&lt;/code> 和 &lt;code>query_list&lt;/code> 讀檔進來後，之後將每個 doc 和 query 都使用 &lt;code>split()&lt;/code> 儲存起來，並將這些 list 放到 &lt;code>set&lt;/code> 中製作 dictionary，這邊做了一個小偷吃步，直接把 dictionary 的範圍縮小到只看所有 &lt;code>query&lt;/code> 出現過的字，把 dictionary 的維度從 59680 降到了 123 而已。&lt;/p>
+&lt;h3 id="模型參數調整">模型參數調整&lt;/h3>
+&lt;p>我的 document 和 query 的 term weight 都是使用此公式：&lt;/p>
+&lt;p>$$tf_{i,j} \times log(1+\frac{N+1}{n_{i}+1})$$&lt;/p>
+&lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
+&lt;p>vector space model 會給出一個 doc 或 query 對應到所有 dictionary 中的向量，所以我們使用一個 doc 的向量和 query 的向量去做 cosine similarity，我們就可以得到兩者間的相似程度，所以我們將所有 doc 的向量都跟 query 的向量算過相似度後，我們就可以從高排到低找出跟該 query 最相關的 doc。&lt;/p>
+&lt;h3 id="個人心得">個人心得&lt;/h3>
+&lt;p>一開始模仿 sklearn 套件的公式，算出來的結果剛好超過 baseline 一些些，但大家的分數都蠻高的，所以請教別人後才知道有只看 query 出現過的字這個偷吃步的方法，除了讓程式效率變高之外，也讓我的分數往上不少。&lt;/p></description></item><item><title>Singly Connected Problem</title><link>https://blog.jeffery.tk/p/singly-connected-problem/</link><pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/singly-connected-problem/</guid><description>&lt;img src="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy.png" alt="Featured image of post Singly Connected Problem" />&lt;h2 id="題目說明">題目說明&lt;/h2>
+&lt;p>Give an efficient algorithm to determine whether or not a directed graph is singly connected.&lt;/p>
+&lt;hr>
+&lt;h2 id="螢幕輸入">螢幕輸入&lt;/h2>
+&lt;p>First line is N, denotes the amount of test case, then there are Ns graph data followed by N. Second line is V, each graph data is composed of V (the number of vertices, &amp;lt;= 1000). Third line is E, the number of edges, it does no size limitation, then followed by Es edges which are denoted by pair of vertex (e.g., 2 4 is vertex 2-&amp;gt;4, the first vertex number is 0 of all the vertex). Each vertex is an integer in [0, n-1], also notes that the input edge is not ordered by the start vertex.&lt;/p>
+&lt;h2 id="螢幕輸出">螢幕輸出&lt;/h2>
+&lt;p>If the input graph is singly connected, output the ”YES”, or “NO” if not.&lt;/p>
+&lt;p>The test case number should be printed before the answer.&lt;/p>
+&lt;h3 id="example">Example&lt;/h3>
+&lt;h4 id="螢幕輸入-1">螢幕輸入:&lt;/h4>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-text" data-lang="text">2
+6
+8
+0 1
+0 4
+1 2
+2 0
+2 1
+3 2
+4 5
+5 4
+3
+3
+0 1
+1 2
+2 0
+&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="螢幕輸出-1">螢幕輸出:&lt;/h4>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-text" data-lang="text">1 NO
+2 YES
+&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="題目解析">題目解析&lt;/h2>
+&lt;p>&lt;strong>Singly Connected&lt;/strong> 的定義是&lt;strong>任兩點只有一條路徑能到達&lt;/strong>。&lt;/p>
+&lt;p>於是我們利用 &lt;strong>DFS&lt;/strong> 的特性下去處理，當如果做完的 DFS 的 Graph 中有出現 &lt;strong>forward edge 或是 cross edge&lt;/strong> 的話，表示兩點間有其他路徑存在，則 &lt;strong>Singly Connected 不成立&lt;/strong>。&lt;/p>
+&lt;p>因此我們要以每個點為 root 開始走訪過一次 DFS，看是否在每個情況中是否都不會出現 forward edge 和 cross edge，Singly Connected 才成立。&lt;/p>
+&lt;p>在 DFS 中提到，當我們第一次走訪 edge (u, v)，我們可以從v點來得知該 edge 的特性：&lt;/p>
+&lt;ol>
+&lt;li>若 v 點為白色：表示該 edge 為 tree edge（灰底線）。&lt;/li>
+&lt;li>若 v 點為灰色：表示該 edge 為 back edge（B）。&lt;/li>
+&lt;li>&lt;strong>若 v 點為黑色：表示該 edge 為 forward（F）或 cross（C）edge。&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;figure style="flex-grow: 215; flex-basis: 516px">
+&lt;a href="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy.png" data-size="1425x662">&lt;img src="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy.png"
+srcset="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy_huc152c653de18f942c8476d94e8e99140_70856_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy_huc152c653de18f942c8476d94e8e99140_70856_1024x0_resize_box_2.png 1024w"
+width="1425"
+height="662"
+loading="lazy"
+>
+&lt;/a>
+&lt;/figure>
+測資 1 中以點 3 為 DFS 起點，並出現 cross edge 和重複路徑&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 206; flex-basis: 495px">
+&lt;a href="https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT.png" data-size="1059x513">&lt;img src="https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT.png"
+srcset="https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT_hu7f3da1904cbcced05afeacd4575eed3f_35334_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT_hu7f3da1904cbcced05afeacd4575eed3f_35334_1024x0_resize_box_2.png 1024w"
+width="1059"
+height="513"
+loading="lazy"
+>
+&lt;/a>
+&lt;/figure>
+測資 2 中以點 0 為 DFS 起點，並無出現重複路徑&lt;/p>
+&lt;p>因此我們知道如何判斷 Graph 中是否有 forward edge 或是 cross edge，我們稍微修改基本 DFS 的流程，當我們在走訪該點所連接的其他點的過程中，如果發現點是白色的話，我們會紀錄 parent 和再呼叫一次 DFS Visit。&lt;/p>
+&lt;p>在這裡我們加上另一種情況，也就是用來&lt;strong>判斷是否為 forward 或 cross edge 的情況&lt;/strong>，當點是黑色的話，我們回傳 &lt;strong>&lt;code>FALSE&lt;/code>&lt;/strong>，並中斷遞迴回到主程式，加快程式。&lt;/p>
+&lt;h3 id="程式碼">程式碼&lt;/h3>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="c1">// main.cpp
+&lt;/span>&lt;span class="c1">// Student ID: B10615043
+&lt;/span>&lt;span class="c1">// Date: May 30, 2019
+&lt;/span>&lt;span class="c1">// Last Update: May 30, 2019
+&lt;/span>&lt;span class="c1">// Problem statement: This C++ program for singly connected problem.
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;vector&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="k">namespace&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">node&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 0 = white; 1 = gray; 2 = black;
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">parent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// -1 = NULL;
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">discover&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// discover time
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">finish&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// finish time
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">adj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// adjacencyList
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
+&lt;span class="kt">bool&lt;/span> &lt;span class="nf">DFS_Visit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">node&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">uIndex&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">time&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">N&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// input total case number
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">cin&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">N&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">N&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="c1">// flag to record this graph singly connected or not
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kt">bool&lt;/span> &lt;span class="n">singly&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">V&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// input Vertex amount
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">cin&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">V&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// create Vector list
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">node&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">list&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">node&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">V&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">E&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// input Edge amount
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">cin&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">E&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">j&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">j&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">E&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">j&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// input connect vertex info to adjacency list
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">cin&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">adj&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">time&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// consider all vertex begin to DFS condition
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">j&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">j&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">V&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">j&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="c1">// reset all vertex info but adjacency list
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">V&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">parent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">finish&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">discover&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// call DFS_Visit Function to determine singly connected
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">singly&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">DFS_Visit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">list&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">j&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">time&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="c1">// if already not singly connected break the loop
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">singly&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// output case number and singly connect or not
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">singly&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34; YES&amp;#34;&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">else&lt;/span> &lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34; NO&amp;#34;&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// delete list to free memory
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">delete&lt;/span>&lt;span class="p">[]&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// Based on Slide Page 45 DFS-VISIT(G, u)
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">bool&lt;/span> &lt;span class="nf">DFS_Visit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">node&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">u&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">time&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="c1">// while vertex u has just discovered
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">time&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">time&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">discover&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">time&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// set the color white to gray
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">adj&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="c1">// explore edge (u, v)
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">v&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">adj&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;span class="c1">// if edge is tree edge
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="c1">// set parent and go on DFS-Visit
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">parent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">u&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// if return false then also return false to speed up program
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">DFS_Visit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">G&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">v&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">time&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// if edge is forward or cross edge then return false
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// blacken u, it is finished
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">time&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">time&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">finish&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">time&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="c1">// success DFS visit(G, u) no encounter forward or cross edge return true
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="pseudo-code">Pseudo code&lt;/h3>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-go" data-lang="go">&lt;span class="c1">// Based on Slide Page 45 DFS-VISIT(G, u)
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">bool&lt;/span> &lt;span class="nf">DFS_Visit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">node&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="nx">G&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nx">u&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span> &lt;span class="nx">time&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="c1">// while vertex u has just discoverd
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">time&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">time&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">discover&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">time&lt;/span>
+&lt;span class="c1">// set the color white to gray
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">color&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">GRAY&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="nx">each&lt;/span> &lt;span class="nx">v&lt;/span> &lt;span class="nx">in&lt;/span> &lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">adj&lt;/span>&lt;span class="p">[]&lt;/span>
+&lt;span class="c1">// if edge is tree edge
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">color&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="nx">WHITE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="c1">// set parent and go on DFS-Visit
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">parent&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">u&lt;/span>
+&lt;span class="c1">// if return false then also return false to speed up program
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="nf">DFS_Visit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">G&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">v&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">time&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;span class="nx">end&lt;/span> &lt;span class="k">if&lt;/span>
+&lt;span class="c1">// if edge is forward or cross edge then return false
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">color&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;span class="nx">end&lt;/span> &lt;span class="k">if&lt;/span>
+&lt;span class="c1">// blacken u, it is finished
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">color&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">BLACK&lt;/span>
+&lt;span class="nx">time&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">time&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;span class="nx">G&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="nx">finish&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">time&lt;/span>
+&lt;span class="c1">// success DFS visit(G, u) no encounter forward or cross edge return true
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Jeffery's Blog</title><link>https://blog.jeffery.tk/page/</link><description>Recent content in Pages on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jeffery.tk/page/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://blog.jeffery.tk/about/</link><pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/about/</guid><description>Hi, I am Jeffery, a computer science master student at National Taiwan University of Science and Technology.
+Project experiences 玩家社交網絡與惡意文字訊息攔截屏蔽
+資料探勘與社群網路分析實驗室
+透過玩家間的交流訊息，瞭解平台的社交網絡關係，並利用深度學習神經網路來判斷攔截交流間的不當文字資訊或廣告發放，以提升平台穩定度，並給予一般玩家友善的遊戲環境。
+人力銀行職缺推薦系統
+資料探勘與社群網路分析實驗室 - 協助產學計畫
+由 1111 人力銀行提供職缺與應徵資料，輸入過去的工作經驗以及目前欲尋找的職缺名稱等資料，利用自然語言 word2vec 比對所有廠商的職缺標題，計算出兩者間相似度，再總和求職者履歷與職缺資訊的類別與工作地點，推薦最適合的職缺列表給求職者。
+利用關聯分析實現 Netflix 影集推薦系統
+2020 Spring - Practice of Social Media Analytics Team Final Report
+輸入某 Netflix 影集，依據該影集內容介紹、演員與導演清單等來推薦與該部影片相似的 n 部影集，其中我們想要使用不同自然語言處理方法來按照影集介紹內容相似程度排序，比較其表現並選擇與探討適合的關聯分析法。
+NTUST-M
+2020 Spring - iOS Programming Team Project
+一款台科學生的 iOS App，利用 Moodle RESTful API 獲得學生修課資訊，除了顯示每學期課表外，也提供校園行事曆查詢，教室使用情況查詢，方便同學在空堂時間找空教室休息。</description></item><item><title>Archives</title><link>https://blog.jeffery.tk/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/archives/</guid><description/></item><item><title>Search</title><link>https://blog.jeffery.tk/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/search/</guid><description/></item></channel></rss>
