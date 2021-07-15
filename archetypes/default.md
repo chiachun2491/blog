@@ -1,12 +1,11 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
+description: 
 date: {{ .Date }}
-hero: /images/hero-3.jpg
-excerpt: "A default excerpt"
-timeToRead: 5
-authors:
-  - Jeffery Ho
+image: 
+math: 
+license: 
+hidden: false
+comments: true
 draft: true
 ---
-
-Some default content

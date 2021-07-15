@@ -1,3 +1,3 @@
-[submodule "themes/novela"]
-	path = themes/novela
-	url = https://github.com/chiachun2491/hugo-theme-novela.git
+[submodule "themes/hugo-theme-stack"]
+	path = themes/hugo-theme-stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack/
