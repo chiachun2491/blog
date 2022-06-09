@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jeffery's Blog</title><link>https://blog.jeffery.tk/</link><description>Recent content on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jeffery.tk/index.xml" rel="self" type="application/rss+xml"/><item><title>利用車牌辨識以檢測違規車牌</title><link>https://blog.jeffery.tk/p/edge-plate-detection/</link><pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-plate-detection/</guid><description>&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5.png" alt="Featured image of post 利用車牌辨識以檢測違規車牌" />&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jeffery's Blog</title><link>https://blog.jefferyho.cc/</link><description>Recent content on Jeffery's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.jefferyho.cc/index.xml" rel="self" type="application/rss+xml"/><item><title>利用車牌辨識以檢測違規車牌</title><link>https://blog.jefferyho.cc/p/edge-plate-detection/</link><pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/edge-plate-detection/</guid><description>&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/BNgrLe5.png" alt="Featured image of post 利用車牌辨識以檢測違規車牌" />&lt;ul>
 &lt;li>臺灣科技大學資訊工程系 109學年度第二學期 ( 2021/2/24 - 2021/6/23 )&lt;/li>
 &lt;li>課程名稱：人工智慧與邊緣運算實務&lt;/li>
 &lt;li>課程代號：CS5149701&lt;/li>
@@ -18,8 +18,8 @@
 &lt;p>推論的流程共分為三部分，分別為「車輛偵測」－「車牌偵測」－「車牌 OCR」。&lt;/p>
 &lt;p>接收到輸入的影像後，會先使用預訓練的 yolo-v4 coco 偵測出畫面上的車輛（汽車、摩托車），再使用自己另外訓練的自定義的車牌偵測資料集偵測出車牌位置後，再使用 tesseract 在車牌位置上進行 OCR 辨識。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 448; flex-basis: 1076px">
-&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5.png" data-size="713x159">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5.png"
-srcset="https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5_huf738ae938586e2523874cb2afd528823_128500_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/BNgrLe5_huf738ae938586e2523874cb2afd528823_128500_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-plate-detection/BNgrLe5.png" data-size="713x159">&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/BNgrLe5.png"
+srcset="https://blog.jefferyho.cc/p/edge-plate-detection/BNgrLe5_huf738ae938586e2523874cb2afd528823_128500_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-plate-detection/BNgrLe5_huf738ae938586e2523874cb2afd528823_128500_1024x0_resize_box_2.png 1024w"
 width="713"
 height="159"
 loading="lazy"
@@ -38,8 +38,8 @@ alt="車牌辨識推論流程示意圖">
 &lt;li>Traffic Law Enforcement (LE)&lt;/li>
 &lt;/ul>
 &lt;p>&lt;figure style="flex-grow: 443; flex-basis: 1064px">
-&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B.png" data-size="1694x382">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B.png"
-srcset="https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B_hu1bd3c88400bd229af46472baf76dc986_937898_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/mvdqb4B_hu1bd3c88400bd229af46472baf76dc986_937898_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-plate-detection/mvdqb4B.png" data-size="1694x382">&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/mvdqb4B.png"
+srcset="https://blog.jefferyho.cc/p/edge-plate-detection/mvdqb4B_hu1bd3c88400bd229af46472baf76dc986_937898_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-plate-detection/mvdqb4B_hu1bd3c88400bd229af46472baf76dc986_937898_1024x0_resize_box_2.png 1024w"
 width="1694"
 height="382"
 loading="lazy"
@@ -54,8 +54,8 @@ alt="AC, RP, LE (AOLP Datasets)">
 &lt;li>另外原資料集的部分都是汽車車牌截圖，我自行產生的部分有一半是機車車牌截圖&lt;/li>
 &lt;/ul>
 &lt;p>&lt;figure style="flex-grow: 431; flex-basis: 1034px">
-&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/dJptjud.png" data-size="569x132">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/dJptjud.png"
-srcset="https://blog.jeffery.tk/p/edge-plate-detection/dJptjud_hua9692f444118e12bb5a7dd97071e9cc3_142309_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/dJptjud_hua9692f444118e12bb5a7dd97071e9cc3_142309_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-plate-detection/dJptjud.png" data-size="569x132">&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/dJptjud.png"
+srcset="https://blog.jefferyho.cc/p/edge-plate-detection/dJptjud_hua9692f444118e12bb5a7dd97071e9cc3_142309_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-plate-detection/dJptjud_hua9692f444118e12bb5a7dd97071e9cc3_142309_1024x0_resize_box_2.png 1024w"
 width="569"
 height="132"
 loading="lazy"
@@ -74,8 +74,8 @@ alt="機車車牌截圖">
 &lt;/ol>
 &lt;p>下圖為車牌偵測模型的訓練過程損失(Loss)及類別平均精確度(mAP)變化圖&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 100; flex-basis: 240px">
-&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N.png" data-size="1000x1000">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N.png"
-srcset="https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N_huf3ecb11a12599b1e142b15d3a88cc185_88769_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/z47DF1N_huf3ecb11a12599b1e142b15d3a88cc185_88769_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-plate-detection/z47DF1N.png" data-size="1000x1000">&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/z47DF1N.png"
+srcset="https://blog.jefferyho.cc/p/edge-plate-detection/z47DF1N_huf3ecb11a12599b1e142b15d3a88cc185_88769_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-plate-detection/z47DF1N_huf3ecb11a12599b1e142b15d3a88cc185_88769_1024x0_resize_box_2.png 1024w"
 width="1000"
 height="1000"
 loading="lazy"
@@ -89,8 +89,8 @@ alt="訓練過程損失(Loss)及類別平均精確度(mAP)變化圖">
 >行車記錄器影片&lt;/a>來做測試範例：&lt;/p>
 &lt;p>如下圖我們可以看到我們訓練出的模型可以很正確的框出車牌的位置，另外在我們自定義的違規車牌列表中，也有偵測到違規的車牌號碼，在繪製結果圖時，程式也會將違規車牌號碼顯示在畫面上。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 188; flex-basis: 451px">
-&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG.png" data-size="580x308">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG.png"
-srcset="https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG_hu004ae0cdf65df785ede56f48894197c9_241036_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/RP2sdGG_hu004ae0cdf65df785ede56f48894197c9_241036_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-plate-detection/RP2sdGG.png" data-size="580x308">&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/RP2sdGG.png"
+srcset="https://blog.jefferyho.cc/p/edge-plate-detection/RP2sdGG_hu004ae0cdf65df785ede56f48894197c9_241036_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-plate-detection/RP2sdGG_hu004ae0cdf65df785ede56f48894197c9_241036_1024x0_resize_box_2.png 1024w"
 width="580"
 height="308"
 loading="lazy"
@@ -110,8 +110,8 @@ alt="模型實際偵測結果">
 &lt;p>這邊原先預計使用 OpenVINO 釋出的車牌偵測模型 &lt;a class="link" href="https://docs.openvinotoolkit.org/2019_R1/_vehicle_license_plate_detection_barrier_0106_description_vehicle_license_plate_detection_barrier_0106.html" target="_blank" rel="noopener"
 >vehicle-license-plate-detection-barrier-0106&lt;/a> 來作為車牌偵測的比較對象，但經過測試後發現該模型貌似並不支援台灣的車牌。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 375; flex-basis: 900px">
-&lt;a href="https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP.png" data-size="638x170">&lt;img src="https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP.png"
-srcset="https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP_hub3cdcbc74f03e51b003fb5182608512b_200808_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-plate-detection/6DqCueP_hub3cdcbc74f03e51b003fb5182608512b_200808_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-plate-detection/6DqCueP.png" data-size="638x170">&lt;img src="https://blog.jefferyho.cc/p/edge-plate-detection/6DqCueP.png"
+srcset="https://blog.jefferyho.cc/p/edge-plate-detection/6DqCueP_hub3cdcbc74f03e51b003fb5182608512b_200808_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-plate-detection/6DqCueP_hub3cdcbc74f03e51b003fb5182608512b_200808_1024x0_resize_box_2.png 1024w"
 width="638"
 height="170"
 loading="lazy"
@@ -149,7 +149,7 @@ alt="測試圖像">
 &lt;p>G. Hsu, J. Chen and Y. Chung, &amp;ldquo;Application-Oriented License Plate Recognition,&amp;rdquo; in IEEE Transactions on Vehicular Technology, vol. 62, no. 2, pp. 552-561, Feb. 2013, doi: 10.1109/TVT.2012.2226218. &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;/section></description></item><item><title>Similarity-Aware Multi-Modal Fake News Detection</title><link>https://blog.jeffery.tk/p/fake-news-detection-safe/</link><pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/fake-news-detection-safe/</guid><description>&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622.png" alt="Featured image of post Similarity-Aware Multi-Modal Fake News Detection" />&lt;blockquote>
+&lt;/section></description></item><item><title>Similarity-Aware Multi-Modal Fake News Detection</title><link>https://blog.jefferyho.cc/p/fake-news-detection-safe/</link><pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/fake-news-detection-safe/</guid><description>&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181436622.png" alt="Featured image of post Similarity-Aware Multi-Modal Fake News Detection" />&lt;blockquote>
 &lt;p>Zhou, Xinyi &amp;amp; Wu, Jindi &amp;amp; Zafarani, Reza. (2020). SAFE: Similarity-Aware Multi-Modal Fake News Detection.&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="introduction">Introduction&lt;/h2>
@@ -160,8 +160,8 @@ alt="測試圖像">
 &lt;p>一些假新聞（或可信度低的新聞）為了吸引公眾注意力，更喜歡使用戲劇性、幽默（滑稽）和誘人的圖像，其內容與新聞文本中的實際內容相去甚遠。&lt;/p>
 &lt;p>所以當一篇假新聞文章講述一個帶有虛構場景或陳述的故事時，是很難找到相關的和未經處理的圖像來匹配這些虛構的內容，因此當創作者使用未經處理的圖像來支持非事實的場景或陳述時，假新聞的文本和視覺信息之間是存在「&lt;strong>差距&lt;/strong>」的。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 148; flex-basis: 357px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959.png" data-size="860x578">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959_hu4c74a270de04c870ca3141c64d84d041_79713_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181043959_hu4c74a270de04c870ca3141c64d84d041_79713_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181043959.png" data-size="860x578">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181043959.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181043959_hu4c74a270de04c870ca3141c64d84d041_79713_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181043959_hu4c74a270de04c870ca3141c64d84d041_79713_1024x0_resize_box_2.png 1024w"
 width="860"
 height="578"
 loading="lazy"
@@ -169,8 +169,8 @@ alt="Miscaptioned Definition">
 &lt;/a>
 &lt;figcaption>Miscaptioned Definition&lt;/figcaption>
 &lt;/figure> &lt;figure style="flex-grow: 97; flex-basis: 234px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943.png" data-size="860x881">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943_huc99c3a8c78c233b5087b183b206703a5_312664_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181147943_huc99c3a8c78c233b5087b183b206703a5_312664_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181147943.png" data-size="860x881">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181147943.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181147943_huc99c3a8c78c233b5087b183b206703a5_312664_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181147943_huc99c3a8c78c233b5087b183b206703a5_312664_1024x0_resize_box_2.png 1024w"
 width="860"
 height="881"
 loading="lazy"
@@ -186,8 +186,8 @@ alt="Examples at https://www.snopes.com/fact-check/rating/miscaptioned/">
 &lt;li>跨模態相似度提取&lt;/li>
 &lt;/ul>
 &lt;p>&lt;figure style="flex-grow: 286; flex-basis: 688px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622.png" data-size="3572x1246">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622_hu1fe59100f806a3b1884406926f185a64_1483991_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715181436622_hu1fe59100f806a3b1884406926f185a64_1483991_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181436622.png" data-size="3572x1246">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181436622.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181436622_hu1fe59100f806a3b1884406926f185a64_1483991_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715181436622_hu1fe59100f806a3b1884406926f185a64_1483991_1024x0_resize_box_2.png 1024w"
 width="3572"
 height="1246"
 loading="lazy"
@@ -216,8 +216,8 @@ alt="SAFE Framework overview">
 &lt;h4 id="text">Text&lt;/h4>
 &lt;p>在新聞文本的部分 SAFE 透過引入額外的全連接層來擴展 Text-CNN 來提取每篇新聞文章的文本特徵。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 239; flex-basis: 574px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938.png" data-size="2240x936">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938_hu3b743b299a93eb2ce79b2b73969d8bfe_352725_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183449938_hu3b743b299a93eb2ce79b2b73969d8bfe_352725_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183449938.png" data-size="2240x936">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183449938.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183449938_hu3b743b299a93eb2ce79b2b73969d8bfe_352725_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183449938_hu3b743b299a93eb2ce79b2b73969d8bfe_352725_1024x0_resize_box_2.png 1024w"
 width="2240"
 height="936"
 loading="lazy"
@@ -228,8 +228,8 @@ alt="Text-CNN">
 &lt;h4 id="image">Image&lt;/h4>
 &lt;p>首先使用預訓練的 image2sentence 模型將新聞內容中的圖像轉換成文字訊息後，同樣使用和處理文字相同的 Text-CNN 來提取特徵。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 464; flex-basis: 1114px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191.png" data-size="3324x716">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191_hu9dd449b03ca8584abf1cfb78fd2ec66d_3138806_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715183859191_hu9dd449b03ca8584abf1cfb78fd2ec66d_3138806_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183859191.png" data-size="3324x716">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183859191.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183859191_hu9dd449b03ca8584abf1cfb78fd2ec66d_3138806_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715183859191_hu9dd449b03ca8584abf1cfb78fd2ec66d_3138806_1024x0_resize_box_2.png 1024w"
 width="3324"
 height="716"
 loading="lazy"
@@ -261,8 +261,8 @@ alt="image2sentence example (source: https://github.com/nikhilmaram/Show_and_Tel
 &lt;p>$$L_S(\theta_t, \theta_v) = -\mathbb{E}_{(a,y) \sim (A,Y)}(y \log (1-M_s(t,v)) + (1-y)\log M_s(t,v))$$&lt;/p>
 &lt;h2 id="optimization">Optimization&lt;/h2>
 &lt;p>&lt;figure style="flex-grow: 178; flex-basis: 427px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546.png" data-size="1380x774">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546_huf292d83af57ff9e0d1769df8a8099f6f_238027_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201549546_huf292d83af57ff9e0d1769df8a8099f6f_238027_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201549546.png" data-size="1380x774">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201549546.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201549546_huf292d83af57ff9e0d1769df8a8099f6f_238027_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201549546_huf292d83af57ff9e0d1769df8a8099f6f_238027_1024x0_resize_box_2.png 1024w"
 width="1380"
 height="774"
 loading="lazy"
@@ -270,8 +270,8 @@ alt="SAFE Optimization Algorithm">
 &lt;/a>
 &lt;figcaption>SAFE Optimization Algorithm&lt;/figcaption>
 &lt;/figure> &lt;figure style="flex-grow: 128; flex-basis: 307px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119.png" data-size="2240x1746">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119_huf2bbe367ef12d20ead920207669390cf_770507_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715201639119_huf2bbe367ef12d20ead920207669390cf_770507_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201639119.png" data-size="2240x1746">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201639119.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201639119_huf2bbe367ef12d20ead920207669390cf_770507_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715201639119_huf2bbe367ef12d20ead920207669390cf_770507_1024x0_resize_box_2.png 1024w"
 width="2240"
 height="1746"
 loading="lazy"
@@ -288,8 +288,8 @@ alt="SAFE Update Equations">
 &lt;li>GossipCop (gossipcop.com) (2000.07 ~ 2018.12)&lt;br>對雜誌和報紙上發表的名人報導和娛樂故事進行事實核查。&lt;/li>
 &lt;/ul>
 &lt;p>&lt;figure style="flex-grow: 545; flex-basis: 1309px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349.png" data-size="2554x468">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349_hu33b818b7ce510be2d60fd4b67ec936ca_281339_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715213607349_hu33b818b7ce510be2d60fd4b67ec936ca_281339_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715213607349.png" data-size="2554x468">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715213607349.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715213607349_hu33b818b7ce510be2d60fd4b67ec936ca_281339_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715213607349_hu33b818b7ce510be2d60fd4b67ec936ca_281339_1024x0_resize_box_2.png 1024w"
 width="2554"
 height="468"
 loading="lazy"
@@ -310,8 +310,8 @@ alt="Data Statistics https://github.com/KaiDMML/FakeNewsNet">
 &lt;/ol>
 &lt;h3 id="performance-analysis">Performance Analysis&lt;/h3>
 &lt;p>&lt;figure style="flex-grow: 327; flex-basis: 786px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866.png" data-size="3460x1056">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866_hu45946cf8b615dd721c01565f1ed4386e_910607_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214144866_hu45946cf8b615dd721c01565f1ed4386e_910607_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214144866.png" data-size="3460x1056">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214144866.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214144866_hu45946cf8b615dd721c01565f1ed4386e_910607_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214144866_hu45946cf8b615dd721c01565f1ed4386e_910607_1024x0_resize_box_2.png 1024w"
 width="3460"
 height="1056"
 loading="lazy"
@@ -332,8 +332,8 @@ alt="Performance of Methods in Detecting Fake News">
 &lt;li>文本信息（SAFE\V）比視覺信息（SAFE\T）更重要&lt;/li>
 &lt;/ol>
 &lt;p>&lt;figure style="flex-grow: 54; flex-basis: 130px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542.png" data-size="559x1030">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542_hu4e1aa221f29204d884102df40b834eb0_63203_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214629542_hu4e1aa221f29204d884102df40b834eb0_63203_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214629542.png" data-size="559x1030">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214629542.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214629542_hu4e1aa221f29204d884102df40b834eb0_63203_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214629542_hu4e1aa221f29204d884102df40b834eb0_63203_1024x0_resize_box_2.png 1024w"
 width="559"
 height="1030"
 loading="lazy"
@@ -341,8 +341,8 @@ alt="Module Analysis">
 &lt;/a>
 &lt;figcaption>Module Analysis&lt;/figcaption>
 &lt;/figure> &lt;figure style="flex-grow: 113; flex-basis: 272px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374.png" data-size="1120x986">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374_hudaf0970889790d7d6a6fc81c1fbfccf4_229991_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715214708374_hudaf0970889790d7d6a6fc81c1fbfccf4_229991_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214708374.png" data-size="1120x986">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214708374.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214708374_hudaf0970889790d7d6a6fc81c1fbfccf4_229991_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715214708374_hudaf0970889790d7d6a6fc81c1fbfccf4_229991_1024x0_resize_box_2.png 1024w"
 width="1120"
 height="986"
 loading="lazy"
@@ -375,8 +375,8 @@ alt="Parameter Analysis">
 &lt;/li>
 &lt;/ol>
 &lt;p>&lt;figure style="flex-grow: 144; flex-basis: 345px">
-&lt;a href="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596.png" data-size="1120x777">&lt;img src="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596.png"
-srcset="https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596_hu5f40eb4e99386465f077d3f034e16588_1024391_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/fake-news-detection-safe/image-20210715220237596_hu5f40eb4e99386465f077d3f034e16588_1024391_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715220237596.png" data-size="1120x777">&lt;img src="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715220237596.png"
+srcset="https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715220237596_hu5f40eb4e99386465f077d3f034e16588_1024391_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/fake-news-detection-safe/image-20210715220237596_hu5f40eb4e99386465f077d3f034e16588_1024391_1024x0_resize_box_2.png 1024w"
 width="1120"
 height="777"
 loading="lazy"
@@ -406,7 +406,7 @@ alt="Fake/True News Examples">
 &lt;li>Multi-modal baseline only one to compared&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;/ul></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jeffery.tk/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/edge-cnn-human-head/</guid><description>&lt;ul>
+&lt;/ul></description></item><item><title>A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip</title><link>https://blog.jefferyho.cc/p/edge-cnn-human-head/</link><pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/edge-cnn-human-head/</guid><description>&lt;ul>
 &lt;li>&lt;strong>論文名稱：&lt;/strong> A CNN-Based Human Head Detection Algorithm Implemented on Edge AI Chip&lt;/li>
 &lt;li>&lt;strong>論文來源：&lt;/strong> ICSSE 2020&lt;/li>
 &lt;li>&lt;strong>論文連結：&lt;/strong> &lt;a href="https://doi.org/10.1109/ICSSE50014.2020.9219260">https://doi.org/10.1109/ICSSE50014.2020.9219260&lt;/a>&lt;/li>
@@ -417,8 +417,8 @@ alt="Fake/True News Examples">
 &lt;p>近年來進行人頭檢測的許多方法都是使用 CNN (Convolutional Neural Network) 進行，但大多數的方法為了追求高準確率，通常都會增加網路的layer的層數或是增加網路的權重，導致計算量增大以及硬體需求增加。&lt;/p>
 &lt;p>相對的，使用整合好的 CNN IC 晶片可以得到更好功耗及計算速度，本文使用由 &lt;strong>視芯公司（AVSdep）&lt;/strong> 的Mipy (Micropython) 開發板（AVS05P-S），搭配 CNN IC (AI860) 及視芯提供的訓練工具進行模型的訓練。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 152; flex-basis: 365px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu.png" data-size="646x424">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu_hud40173a5139939dc4aa8da344b78e686_178835_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/WQPWzMu_hud40173a5139939dc4aa8da344b78e686_178835_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/WQPWzMu.png" data-size="646x424">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/WQPWzMu.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/WQPWzMu_hud40173a5139939dc4aa8da344b78e686_178835_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/WQPWzMu_hud40173a5139939dc4aa8da344b78e686_178835_1024x0_resize_box_2.png 1024w"
 width="646"
 height="424"
 loading="lazy"
@@ -426,8 +426,8 @@ alt="Mipy 開發板外觀（圖片來源： https://ieeexplore.ieee.org/document
 &lt;/a>
 &lt;figcaption>Mipy 開發板外觀（圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
 &lt;/figure> &lt;figure style="flex-grow: 128; flex-basis: 309px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu.png" data-size="626x486">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu_hu56c3e12213b55ef3bc2c798a53a11db7_50976_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/lEGzyDu_hu56c3e12213b55ef3bc2c798a53a11db7_50976_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/lEGzyDu.png" data-size="626x486">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/lEGzyDu.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/lEGzyDu_hu56c3e12213b55ef3bc2c798a53a11db7_50976_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/lEGzyDu_hu56c3e12213b55ef3bc2c798a53a11db7_50976_1024x0_resize_box_2.png 1024w"
 width="626"
 height="486"
 loading="lazy"
@@ -466,8 +466,8 @@ alt="Mipy 開發板應用架構圖（圖片來源： https://ieeexplore.ieee.org
 &lt;/ul>
 &lt;h2 id="mipy-運算過程">Mipy 運算過程&lt;/h2>
 &lt;p>&lt;figure style="flex-grow: 69; flex-basis: 165px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q.png" data-size="536x776">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q_hufae0aaffe141195c836de154257d6b63_218947_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/7Ndsr2Q_hufae0aaffe141195c836de154257d6b63_218947_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/7Ndsr2Q.png" data-size="536x776">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/7Ndsr2Q.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/7Ndsr2Q_hufae0aaffe141195c836de154257d6b63_218947_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/7Ndsr2Q_hufae0aaffe141195c836de154257d6b63_218947_1024x0_resize_box_2.png 1024w"
 width="536"
 height="776"
 loading="lazy"
@@ -477,8 +477,8 @@ alt="Mipy 運算過程流程圖（圖片來源： https://ieeexplore.ieee.org/do
 &lt;/figure>&lt;/p>
 &lt;p>作者拍攝了一些人作為資料集，總共 8 個身體方向，而每個身體方向都包含 5 個頭部方向，分別為：向上、向後、向左、向右、向前，總共拍攝了 800 多張照片，將這些照片分成三個類別，分別為：前面、後面、側面。
 &lt;figure style="flex-grow: 305; flex-basis: 733px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX.png" data-size="764x250">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX_hucb67491b7a051ba435867d899825433e_268210_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/h3dfONX_hucb67491b7a051ba435867d899825433e_268210_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/h3dfONX.png" data-size="764x250">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/h3dfONX.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/h3dfONX_hucb67491b7a051ba435867d899825433e_268210_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/h3dfONX_hucb67491b7a051ba435867d899825433e_268210_1024x0_resize_box_2.png 1024w"
 width="764"
 height="250"
 loading="lazy"
@@ -488,8 +488,8 @@ alt="(a) 前面 Front View (b) 後面 Back View (c) 側面 Side View （圖片�
 &lt;/figure>&lt;/p>
 &lt;p>為了增加資料集的多樣性，作者使用推論工具進行資料擴增（如前面章節說明），將圖片數從800多張擴增到總共 120,000 章圖片，分成 108,000 張圖片為訓練集，12,000 張圖片為測試集，擴增參數設定如表 1。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 279; flex-basis: 671px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq.png" data-size="806x288">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq_hue3fd285faa45d1a9777f005bd445d4b4_63390_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/SZvYLWq_hue3fd285faa45d1a9777f005bd445d4b4_63390_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/SZvYLWq.png" data-size="806x288">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/SZvYLWq.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/SZvYLWq_hue3fd285faa45d1a9777f005bd445d4b4_63390_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/SZvYLWq_hue3fd285faa45d1a9777f005bd445d4b4_63390_1024x0_resize_box_2.png 1024w"
 width="806"
 height="288"
 loading="lazy"
@@ -540,8 +540,8 @@ alt="資料擴增使用方法及參數（圖片來源： https://ieeexplore.ieee
 &lt;/ol>
 &lt;p>上述步驟進行 3 次後，產生 &lt;code>G0&lt;/code> 做為預訓練模型，不過從下圖可以發現訓練誤差遠低於測試誤差。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 129; flex-basis: 311px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg.png" data-size="410x316">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg_hud841408a07afb484c3628596b1504c4c_72206_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/LVoVSsg_hud841408a07afb484c3628596b1504c4c_72206_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/LVoVSsg.png" data-size="410x316">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/LVoVSsg.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/LVoVSsg_hud841408a07afb484c3628596b1504c4c_72206_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/LVoVSsg_hud841408a07afb484c3628596b1504c4c_72206_1024x0_resize_box_2.png 1024w"
 width="410"
 height="316"
 loading="lazy"
@@ -558,8 +558,8 @@ $$S = N_0 - N_5$$&lt;/p>
 &lt;/ul>
 &lt;p>這邊訓練的過程就是使用預訓練時的批次檔作為訓練循環，直到大多數的負樣本時將停止訓練，第一次訓練完的模型稱為 &lt;code>G1&lt;/code>，作者提到說驗證 &lt;code>G1&lt;/code> 的過程中發現許多 False Positive Data，經過重複進行修正和訓練後，第二次訓練完成的模型稱為 &lt;code>G2&lt;/code>，以此類推，在 &lt;code>G4&lt;/code> 檢測到的 False Positive Data 已經很少，但準確度依舊只有 58.9%，判斷為 overfitting，因此作者決定增加其他訓練資料。
 &lt;figure style="flex-grow: 410; flex-basis: 986px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER.png" data-size="600x146">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER_hu65ab1b83269040a11217499d11e0ae2d_58434_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/1H2L2ER_hu65ab1b83269040a11217499d11e0ae2d_58434_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/1H2L2ER.png" data-size="600x146">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/1H2L2ER.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/1H2L2ER_hu65ab1b83269040a11217499d11e0ae2d_58434_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/1H2L2ER_hu65ab1b83269040a11217499d11e0ae2d_58434_1024x0_resize_box_2.png 1024w"
 width="600"
 height="146"
 loading="lazy"
@@ -569,8 +569,8 @@ alt="G1, G2, G3, G4 Train/Test Loss （圖片來源： https://ieeexplore.ieee.o
 &lt;/figure>&lt;/p>
 &lt;p>這邊增加的資料為 &lt;strong>Label Face in the Wild (LFW)&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>&lt;/strong>，挑選的標準為照片中只能出現一個人，以及臉部不可以被其他東西覆蓋，經過篩選後共 9,131 張照片被挑選，其中 1/4 作為測試集，剩餘資料作為訓練集使用。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 257; flex-basis: 617px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV.png" data-size="355x138">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV_hu2f0d495c0b7cd110a41685932f9ed5bc_106758_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/gMbWiLV_hu2f0d495c0b7cd110a41685932f9ed5bc_106758_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/gMbWiLV.png" data-size="355x138">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/gMbWiLV.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/gMbWiLV_hu2f0d495c0b7cd110a41685932f9ed5bc_106758_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/gMbWiLV_hu2f0d495c0b7cd110a41685932f9ed5bc_106758_1024x0_resize_box_2.png 1024w"
 width="355"
 height="138"
 loading="lazy"
@@ -580,8 +580,8 @@ alt="Label Face in the Wild (LFW) 資料示意 （圖片來源： http://vis-www
 &lt;/figure>&lt;/p>
 &lt;p>加入 LFW 訓練後，訓練出了 &lt;code>G5&lt;/code>、&lt;code>G6&lt;/code> 兩個模型，準確率也分別到達 65.1% 和 70.1%。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 206; flex-basis: 494px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH.png" data-size="299x145">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH_hu258a758431b9e6fcfcddca42b6199a38_30228_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/1MaGDYH_hu258a758431b9e6fcfcddca42b6199a38_30228_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/1MaGDYH.png" data-size="299x145">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/1MaGDYH.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/1MaGDYH_hu258a758431b9e6fcfcddca42b6199a38_30228_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/1MaGDYH_hu258a758431b9e6fcfcddca42b6199a38_30228_1024x0_resize_box_2.png 1024w"
 width="299"
 height="145"
 loading="lazy"
@@ -592,8 +592,8 @@ alt="G5, G6 Train/Test Loss （圖片來源： https://ieeexplore.ieee.org/docum
 &lt;h2 id="實驗結果與分析">實驗結果與分析&lt;/h2>
 &lt;p>將訓練好的模型載入到 AI860 後， Mipy 開發板可以執行人頭偵測任務（如下圖所示）。
 &lt;figure style="flex-grow: 200; flex-basis: 480px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc.png" data-size="450x225">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc_hu21b3b33ca83fd6f8ed88aebad3cd8268_194226_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/ME6Aklc_hu21b3b33ca83fd6f8ed88aebad3cd8268_194226_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/ME6Aklc.png" data-size="450x225">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/ME6Aklc.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/ME6Aklc_hu21b3b33ca83fd6f8ed88aebad3cd8268_194226_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/ME6Aklc_hu21b3b33ca83fd6f8ed88aebad3cd8268_194226_1024x0_resize_box_2.png 1024w"
 width="450"
 height="225"
 loading="lazy"
@@ -603,8 +603,8 @@ alt="實時系統應用畫面（圖片來源： https://ieeexplore.ieee.org/docu
 &lt;/figure>&lt;/p>
 &lt;p>作者也分析了加入 LFW 前後的比較差異，如下表 3、4 所示，我們可以發現準確率提升了 6 %，但是上升幅度並不夠明顯，於是將各種類別（前、後、側面）的資料拆開檢視後發現正面的準確度遠高於側面與後面（如下表 G5/G6 Front View），作者研判原因是因為加入的 LFW dataset 都是正面臉部的關係，導致資料不平衡的情況發生。
 &lt;figure style="flex-grow: 390; flex-basis: 937px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So.png" data-size="660x169">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So_hu47a4cb1d083bd5acc5d0c7dce528d548_45688_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/kBI91So_hu47a4cb1d083bd5acc5d0c7dce528d548_45688_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/kBI91So.png" data-size="660x169">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/kBI91So.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/kBI91So_hu47a4cb1d083bd5acc5d0c7dce528d548_45688_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/kBI91So_hu47a4cb1d083bd5acc5d0c7dce528d548_45688_1024x0_resize_box_2.png 1024w"
 width="660"
 height="169"
 loading="lazy"
@@ -613,8 +613,8 @@ alt="G4, G5 Confusion Matrix （圖片來源： https://ieeexplore.ieee.org/docu
 &lt;figcaption>G4, G5 Confusion Matrix （圖片來源： &lt;a href="https://ieeexplore.ieee.org/document/9219260">https://ieeexplore.ieee.org/document/9219260&lt;/a> ）&lt;/figcaption>
 &lt;/figure>&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 458; flex-basis: 1100px">
-&lt;a href="https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP.png" data-size="656x143">&lt;img src="https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP.png"
-srcset="https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP_huaeeec9757a7db7fa777adae570aa0be2_32424_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/edge-cnn-human-head/gXWfuKP_huaeeec9757a7db7fa777adae570aa0be2_32424_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/edge-cnn-human-head/gXWfuKP.png" data-size="656x143">&lt;img src="https://blog.jefferyho.cc/p/edge-cnn-human-head/gXWfuKP.png"
+srcset="https://blog.jefferyho.cc/p/edge-cnn-human-head/gXWfuKP_huaeeec9757a7db7fa777adae570aa0be2_32424_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/edge-cnn-human-head/gXWfuKP_huaeeec9757a7db7fa777adae570aa0be2_32424_1024x0_resize_box_2.png 1024w"
 width="656"
 height="143"
 loading="lazy"
@@ -636,7 +636,7 @@ alt="G5, G6 Front View Only Confusion Matrix （圖片來源： https://ieeexplo
 &lt;p>G. B. Huang, M. Mattar, T. Berg, and E. Learned-Miller, “Labeled faces in the wild: A database for studying face recognition in unconstrained environments,” Technical Report, University of Massachusetts, Amherst, Oct. 2007. &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;/section></description></item><item><title>Query Modeling</title><link>https://blog.jeffery.tk/p/ir-homework5/</link><pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework5/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;/section></description></item><item><title>Query Modeling</title><link>https://blog.jefferyho.cc/p/ir-homework5/</link><pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/ir-homework5/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
 &lt;blockquote>
 &lt;p>2020: Information Retrieval and Applications&lt;br>
 Homework 5: Query Modeling&lt;br>
@@ -753,7 +753,7 @@ $&lt;/p>
 &lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
 &lt;p>query model 主要是要解決 query 的資訊量過少的問題，像 rocchio 就是將 query 的向量加上了相關的文件向量也去除了一些些不相關文章向量，讓 query vector 能夠涵蓋更多資訊，SMM 則是透過 training P_smm 和 P_bg 讓更多特定的單字（在 background model 中沒有辦法被找到的單字）能夠在 P_smm 中的機率提高，提升 query model 的判別力。&lt;/p>
 &lt;h3 id="個人心得">個人心得&lt;/h3>
-&lt;p>　　這次作業一開始寫的時候原本以為會很簡單，想說直接挑戰實作 SMM，結果馬上被單字量嚇到，一開始也做不出來，所以就轉戰 rochhio，但是發現用第一次作業的 VSM 都沒有過 baseline，後來想說先用 sklearn 的 tfidfvectorizer 跑跑看，發現有 sublinear_tf 這個參數可以調整用來縮減 document 長度的問題，發現可以過 baseline，就趕快把公式套上去，這次作業也重做的第一次作業的 VSM，上次作業知道 sparce matrix 後，發現在 VSM 實作效率超級高，後來嘗試去掉一些出現次數較少的單字也有提升一些分數，沒嘗試太多組參數就開始做 SMM，因為這次 VSM 有重做的關係，在前處理建 unigram 和 background model 的時候都比上次 PLSA 的效率快多啦，後面就開始調整 SMM 的參數，然後到了一個瓶頸後又把目前最高分的結果當作 relevant feedback，的確也有再進步，但後面要再用同一個方法的時候就往下掉了一些，調參數的過程中也好擔心 private 的成績會掉超多的 QQ。&lt;/p></description></item><item><title>PLSA</title><link>https://blog.jeffery.tk/p/ir-homework4/</link><pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework4/</guid><description>&lt;img src="https://blog.jeffery.tk/p/ir-homework4/qITG12G.png" alt="Featured image of post PLSA" />&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;p>　　這次作業一開始寫的時候原本以為會很簡單，想說直接挑戰實作 SMM，結果馬上被單字量嚇到，一開始也做不出來，所以就轉戰 rochhio，但是發現用第一次作業的 VSM 都沒有過 baseline，後來想說先用 sklearn 的 tfidfvectorizer 跑跑看，發現有 sublinear_tf 這個參數可以調整用來縮減 document 長度的問題，發現可以過 baseline，就趕快把公式套上去，這次作業也重做的第一次作業的 VSM，上次作業知道 sparce matrix 後，發現在 VSM 實作效率超級高，後來嘗試去掉一些出現次數較少的單字也有提升一些分數，沒嘗試太多組參數就開始做 SMM，因為這次 VSM 有重做的關係，在前處理建 unigram 和 background model 的時候都比上次 PLSA 的效率快多啦，後面就開始調整 SMM 的參數，然後到了一個瓶頸後又把目前最高分的結果當作 relevant feedback，的確也有再進步，但後面要再用同一個方法的時候就往下掉了一些，調參數的過程中也好擔心 private 的成績會掉超多的 QQ。&lt;/p></description></item><item><title>PLSA</title><link>https://blog.jefferyho.cc/p/ir-homework4/</link><pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/ir-homework4/</guid><description>&lt;img src="https://blog.jefferyho.cc/p/ir-homework4/qITG12G.png" alt="Featured image of post PLSA" />&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
 &lt;blockquote>
 &lt;p>2020: Information Retrieval and Applications&lt;br>
 Homework 4: PLSA&lt;br>
@@ -787,8 +787,8 @@ Homework 4: PLSA&lt;br>
 &lt;li>
 &lt;p>使用的參數對照分數表現圖
 &lt;figure style="flex-grow: 346; flex-basis: 831px">
-&lt;a href="https://blog.jeffery.tk/p/ir-homework4/lKhSjXS.png" data-size="2558x738">&lt;img src="https://blog.jeffery.tk/p/ir-homework4/lKhSjXS.png"
-srcset="https://blog.jeffery.tk/p/ir-homework4/lKhSjXS_hu2d3744508cb2d2c78e497557eda6332c_453545_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/ir-homework4/lKhSjXS_hu2d3744508cb2d2c78e497557eda6332c_453545_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/ir-homework4/lKhSjXS.png" data-size="2558x738">&lt;img src="https://blog.jefferyho.cc/p/ir-homework4/lKhSjXS.png"
+srcset="https://blog.jefferyho.cc/p/ir-homework4/lKhSjXS_hu2d3744508cb2d2c78e497557eda6332c_453545_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/ir-homework4/lKhSjXS_hu2d3744508cb2d2c78e497557eda6332c_453545_1024x0_resize_box_2.png 1024w"
 width="2558"
 height="738"
 loading="lazy"
@@ -801,8 +801,8 @@ alt="參數對照分數表現圖">
 &lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
 &lt;p>PLSA 跟 LSA 的差別在加入的機率的概念，，讓我們可以將單詞對應到主題，再從主題對應到文章，使用兩層的機率分佈對整個樣本空間建模，其中使用 EM-Algorithm 將 &lt;code>P(w|T)&lt;/code> 和 &lt;code>P(T|d)&lt;/code> 重複進行 E-step 和 M-Step 直到算出的 log-likelihood 收斂到某個值。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 260; flex-basis: 624px">
-&lt;a href="https://blog.jeffery.tk/p/ir-homework4/qITG12G.png" data-size="484x186">&lt;img src="https://blog.jeffery.tk/p/ir-homework4/qITG12G.png"
-srcset="https://blog.jeffery.tk/p/ir-homework4/qITG12G_hu1dffc869e1d64a4036e5075742de8ba2_29927_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/ir-homework4/qITG12G_hu1dffc869e1d64a4036e5075742de8ba2_29927_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/ir-homework4/qITG12G.png" data-size="484x186">&lt;img src="https://blog.jefferyho.cc/p/ir-homework4/qITG12G.png"
+srcset="https://blog.jefferyho.cc/p/ir-homework4/qITG12G_hu1dffc869e1d64a4036e5075742de8ba2_29927_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/ir-homework4/qITG12G_hu1dffc869e1d64a4036e5075742de8ba2_29927_1024x0_resize_box_2.png 1024w"
 width="484"
 height="186"
 loading="lazy"
@@ -824,7 +824,7 @@ Topic 45 (ocean): sea island fish ship said water border area whale vietnam
 Topic 7 : 1 2 research 3 4 1993 1992 1991 5 use
 Topic 24 : report state u accord unit intern million firm govern korea
 Topic 41 : 1 2 3 5 4 6 0 8 7 9
-&lt;/code>&lt;/pre></description></item><item><title>Best Match Model 25 (BM25)</title><link>https://blog.jeffery.tk/p/ir-homework2/</link><pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework2/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;/code>&lt;/pre></description></item><item><title>Best Match Model 25 (BM25)</title><link>https://blog.jefferyho.cc/p/ir-homework2/</link><pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/ir-homework2/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
 &lt;blockquote>
 &lt;p>2020: Information Retrieval and Applications&lt;br>
 Homework2: Best Match Models&lt;br>
@@ -863,8 +863,8 @@ Homework2: Best Match Models&lt;br>
 &lt;/li>
 &lt;li>使用的參數對照分數表現圖
 &lt;figure style="flex-grow: 331; flex-basis: 794px">
-&lt;a href="https://blog.jeffery.tk/p/ir-homework2/IxbY9i2.png" data-size="2648x800">&lt;img src="https://blog.jeffery.tk/p/ir-homework2/IxbY9i2.png"
-srcset="https://blog.jeffery.tk/p/ir-homework2/IxbY9i2_hu0186f0df2b5733644caf613a270800df_268748_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/ir-homework2/IxbY9i2_hu0186f0df2b5733644caf613a270800df_268748_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/ir-homework2/IxbY9i2.png" data-size="2648x800">&lt;img src="https://blog.jefferyho.cc/p/ir-homework2/IxbY9i2.png"
+srcset="https://blog.jefferyho.cc/p/ir-homework2/IxbY9i2_hu0186f0df2b5733644caf613a270800df_268748_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/ir-homework2/IxbY9i2_hu0186f0df2b5733644caf613a270800df_268748_1024x0_resize_box_2.png 1024w"
 width="2648"
 height="800"
 loading="lazy"
@@ -876,7 +876,7 @@ alt="參數對照分數表現圖">
 &lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
 &lt;p>BM25 跟 VSM 最大的差異在於多處理了 Document Length Normalization，讓 tf 的重要程度不會直接線性成長，一個字在出現過多次後，已經不會得到更多的分數，一樣的 tf 在較長文章的重要度會低於較短文章。&lt;/p>
 &lt;h3 id="個人心得">個人心得&lt;/h3>
-&lt;p>在一開始寫作業的時候，算好了 average document length，但是實際在計算 term weight 公式的時候忘記放進去，導致 kaggle 的分數都卡在 0.64 多，後來才發現自己耍蠢忘記除，一開始就先按照簡報上設 b 為 0.75，但都還是沒過 baseline 後，決定上調看看，到 0.8 後就過了 baseline，後來嘗試了調整 K1，發現沒有太大的幅度，K3 項後來我直接捨棄，因為試過幾次沒有含 K3 的分數都一模一樣，這次作業比較晚開始寫，所以也沒有測到很多參數，後來就繼續往上調到 b = 0.85 後，就有比較明顯的進展，雖然跟大家比還是差很多，中間有試過調整看看在算 IDF 取 log 前 +1，但是試過效果都更差，所以後來就還是用簡報上的公式，但後來想想也有可能是沒有找到適合的參數才對，搞不好分數會更高。&lt;/p></description></item><item><title>Vector Space Model</title><link>https://blog.jeffery.tk/p/ir-homework1/</link><pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/ir-homework1/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
+&lt;p>在一開始寫作業的時候，算好了 average document length，但是實際在計算 term weight 公式的時候忘記放進去，導致 kaggle 的分數都卡在 0.64 多，後來才發現自己耍蠢忘記除，一開始就先按照簡報上設 b 為 0.75，但都還是沒過 baseline 後，決定上調看看，到 0.8 後就過了 baseline，後來嘗試了調整 K1，發現沒有太大的幅度，K3 項後來我直接捨棄，因為試過幾次沒有含 K3 的分數都一模一樣，這次作業比較晚開始寫，所以也沒有測到很多參數，後來就繼續往上調到 b = 0.85 後，就有比較明顯的進展，雖然跟大家比還是差很多，中間有試過調整看看在算 IDF 取 log 前 +1，但是試過效果都更差，所以後來就還是用簡報上的公式，但後來想想也有可能是沒有找到適合的參數才對，搞不好分數會更高。&lt;/p></description></item><item><title>Vector Space Model</title><link>https://blog.jefferyho.cc/p/ir-homework1/</link><pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/ir-homework1/</guid><description>&lt;h2 id="kaggle-competitions">Kaggle competitions&lt;/h2>
 &lt;blockquote>
 &lt;p>2020: Information Retrieval and Applications&lt;br>
 Homework1: Vector Space Model&lt;br>
@@ -897,7 +897,7 @@ Homework1: Vector Space Model&lt;br>
 &lt;h3 id="模型運作原理">模型運作原理&lt;/h3>
 &lt;p>vector space model 會給出一個 doc 或 query 對應到所有 dictionary 中的向量，所以我們使用一個 doc 的向量和 query 的向量去做 cosine similarity，我們就可以得到兩者間的相似程度，所以我們將所有 doc 的向量都跟 query 的向量算過相似度後，我們就可以從高排到低找出跟該 query 最相關的 doc。&lt;/p>
 &lt;h3 id="個人心得">個人心得&lt;/h3>
-&lt;p>一開始模仿 sklearn 套件的公式，算出來的結果剛好超過 baseline 一些些，但大家的分數都蠻高的，所以請教別人後才知道有只看 query 出現過的字這個偷吃步的方法，除了讓程式效率變高之外，也讓我的分數往上不少。&lt;/p></description></item><item><title>Singly Connected Problem</title><link>https://blog.jeffery.tk/p/singly-connected-problem/</link><pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate><guid>https://blog.jeffery.tk/p/singly-connected-problem/</guid><description>&lt;img src="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy.png" alt="Featured image of post Singly Connected Problem" />&lt;h2 id="題目說明">題目說明&lt;/h2>
+&lt;p>一開始模仿 sklearn 套件的公式，算出來的結果剛好超過 baseline 一些些，但大家的分數都蠻高的，所以請教別人後才知道有只看 query 出現過的字這個偷吃步的方法，除了讓程式效率變高之外，也讓我的分數往上不少。&lt;/p></description></item><item><title>Singly Connected Problem</title><link>https://blog.jefferyho.cc/p/singly-connected-problem/</link><pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate><guid>https://blog.jefferyho.cc/p/singly-connected-problem/</guid><description>&lt;img src="https://blog.jefferyho.cc/p/singly-connected-problem/vIQLtsy.png" alt="Featured image of post Singly Connected Problem" />&lt;h2 id="題目說明">題目說明&lt;/h2>
 &lt;p>Give an efficient algorithm to determine whether or not a directed graph is singly connected.&lt;/p>
 &lt;hr>
 &lt;h2 id="螢幕輸入">螢幕輸入&lt;/h2>
@@ -938,8 +938,8 @@ Homework1: Vector Space Model&lt;br>
 &lt;li>&lt;strong>若 v 點為黑色：表示該 edge 為 forward（F）或 cross（C）edge。&lt;/strong>&lt;/li>
 &lt;/ol>
 &lt;p>&lt;figure style="flex-grow: 215; flex-basis: 516px">
-&lt;a href="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy.png" data-size="1425x662">&lt;img src="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy.png"
-srcset="https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy_huc152c653de18f942c8476d94e8e99140_70856_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/singly-connected-problem/vIQLtsy_huc152c653de18f942c8476d94e8e99140_70856_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/singly-connected-problem/vIQLtsy.png" data-size="1425x662">&lt;img src="https://blog.jefferyho.cc/p/singly-connected-problem/vIQLtsy.png"
+srcset="https://blog.jefferyho.cc/p/singly-connected-problem/vIQLtsy_huc152c653de18f942c8476d94e8e99140_70856_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/singly-connected-problem/vIQLtsy_huc152c653de18f942c8476d94e8e99140_70856_1024x0_resize_box_2.png 1024w"
 width="1425"
 height="662"
 loading="lazy"
@@ -948,8 +948,8 @@ loading="lazy"
 &lt;/figure>
 測資 1 中以點 3 為 DFS 起點，並出現 cross edge 和重複路徑&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 206; flex-basis: 495px">
-&lt;a href="https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT.png" data-size="1059x513">&lt;img src="https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT.png"
-srcset="https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT_hu7f3da1904cbcced05afeacd4575eed3f_35334_480x0_resize_box_2.png 480w, https://blog.jeffery.tk/p/singly-connected-problem/1ndQOUT_hu7f3da1904cbcced05afeacd4575eed3f_35334_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://blog.jefferyho.cc/p/singly-connected-problem/1ndQOUT.png" data-size="1059x513">&lt;img src="https://blog.jefferyho.cc/p/singly-connected-problem/1ndQOUT.png"
+srcset="https://blog.jefferyho.cc/p/singly-connected-problem/1ndQOUT_hu7f3da1904cbcced05afeacd4575eed3f_35334_480x0_resize_box_2.png 480w, https://blog.jefferyho.cc/p/singly-connected-problem/1ndQOUT_hu7f3da1904cbcced05afeacd4575eed3f_35334_1024x0_resize_box_2.png 1024w"
 width="1059"
 height="513"
 loading="lazy"
